@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import SwiperCore, { EffectFade, Swiper } from 'swiper';
+
+// install Swiper modules
+SwiperCore.use([EffectFade]);
 
 @Component({
   selector: 'app-banner',
@@ -6,7 +10,5 @@ import { Component } from '@angular/core';
   styleUrls: ['banner.page.scss'],
 })
 export class BannerPage {
-
   constructor() {}
-
 }
