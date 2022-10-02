@@ -6,18 +6,24 @@ import { Component } from '@angular/core';
   styleUrls: ['banner.page.scss'],
 })
 export class BannerPage {
-
-  bannerMessages: { id: number, title: string, description: string, imageUrl: string }[] = new Array;
-  public createImageUrl(input: string)  {
-    return "url(assets/" + input + ".jpg)";
+  bannerMessages: {
+    id: number;
+    title: string;
+    description: string;
+    imageUrl: string;
+  }[] = new Array();
+  public createImageUrl(input: string) {
+    return 'url(assets/' + input + '.jpg)';
   }
-  public parseJson (json: { id: number, title: string, description: string, imageId: string }[]) {
-    json.forEach(x => {
+  public parseJson(
+    json: { id: number; title: string; description: string; imageId: string }[]
+  ) {
+    json.forEach((x) => {
       this.bannerMessages.push({
         id: x.id,
         title: x.title,
         description: x.description,
-        imageUrl: this.createImageUrl(x.imageId)
+        imageUrl: this.createImageUrl(x.imageId),
       });
     });
   }
@@ -25,14 +31,26 @@ export class BannerPage {
   ngOnInit() {
     setTimeout(() => {
       let fakeJson = [
-        { id: 0, title: "Available", description: "item is available", imageId: "first" },
-        { id: 1, title: "Ready", description: "item is ready", imageId: "second" },
-        { id: 2, title: "Started", description: "item is started", imageId: "third" },
-    ];
-    this.parseJson(fakeJson);
+        {
+          id: 0,
+          title: '',
+          description: '',
+          imageId: 'first',
+        },
+        {
+          id: 1,
+          title: '',
+          description: '',
+          imageId: 'second',
+        },
+        {
+          id: 2,
+          title: '',
+          description: '',
+          imageId: 'third',
+        },
+      ];
+      this.parseJson(fakeJson);
     }, 1000);
   }
-
-  
->>>>>>> 2a762def89ae8bd595552a89d171f74acebb986e
 }
