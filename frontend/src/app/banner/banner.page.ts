@@ -10,16 +10,15 @@ import SwiperCore, { EffectFade, Swiper } from 'swiper';
   styleUrls: ['banner.page.scss'],
 })
 export class BannerPage {
-  bannerMessages: { id: number, name: string }[] = [
-    { "id": 0, "name": "Available" },
-    { "id": 1, "name": "Ready" },
-    { "id": 2, "name": "Started" }
-];
+  bannerMessages: { id: number; name: string; pictures: string }[] = [
+    { id: 0, name: 'Available', pictures: 'assets/pictures/truck.jpg' },
+    { id: 1, name: 'Ready', pictures: 'assets/pictures/truck.jpg' },
+    { id: 2, name: 'Started', pictures: 'assets/pictures/truck.jpg' },
+  ];
   //bannerMessages: Array<string> = ['Apple', 'Orange', 'Banana'];
-  //bannerMessages = []; 
+  //bannerMessages = [];
   constructor() {}
   // ngOnInit() {
   //fetch from data base.
   // }
-  
 }

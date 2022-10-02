@@ -11,27 +11,25 @@
       climb a mountain or spend a week in the woods. Wash your spirit clean.
     </ion-card-content>
   </ion-card> -->
-  
+
   <swiper>
     <ng-template ngFor let-banner [ngForOf]="bannerMessages">
-      
       <ng-template swiperSlide>
         <ion-card id="test">
           <ion-card-header>
             <ion-card-subtitle>{{ banner.id }}</ion-card-subtitle>
             <ion-card-title>{{ banner.name }}</ion-card-title>
+            <ion-img [src]="banner.pictures"></ion-img>
           </ion-card-header>
-      
-          <ion-card-content >
+
+          <ion-card-content>
             <!-- <a href="https://www.youtube.com/">Click here</a>
             Keep close to Nature's heart... and break clear away, once in awhile, and
             climb a mountain or spend a week in the woods. Wash your spirit clean. -->
           </ion-card-content>
         </ion-card>
-
       </ng-template>
     </ng-template>
-   
   </swiper>
 </ion-content>
 
