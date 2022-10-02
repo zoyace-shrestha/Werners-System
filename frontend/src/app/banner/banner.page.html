@@ -15,11 +15,11 @@
   <swiper>
     <ng-template ngFor let-banner [ngForOf]="bannerMessages">
       <ng-template swiperSlide>
-        <ion-card id="test">
+        <ion-card id="test" [style.background-image]="banner.imageUrl">
           <ion-card-header>
-            <ion-card-subtitle>{{ banner.id }}</ion-card-subtitle>
-            <ion-card-title>{{ banner.name }}</ion-card-title>
-            <ion-img [src]="banner.pictures"></ion-img>
+            <ion-card-title>{{ banner.title }}</ion-card-title>
+            <ion-card-subtitle>{{ banner.description }}</ion-card-subtitle>
+            >>>>>>> 2a762def89ae8bd595552a89d171f74acebb986e
           </ion-card-header>
 
           <ion-card-content>

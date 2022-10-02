@@ -1,8 +1,4 @@
 import { Component } from '@angular/core';
-import SwiperCore, { EffectFade, Swiper } from 'swiper';
-
-// install Swiper modules
-//SwiperCore.use([EffectFade]);
 
 @Component({
   selector: 'app-banner',
@@ -10,15 +6,33 @@ import SwiperCore, { EffectFade, Swiper } from 'swiper';
   styleUrls: ['banner.page.scss'],
 })
 export class BannerPage {
-  bannerMessages: { id: number; name: string; pictures: string }[] = [
-    { id: 0, name: 'Available', pictures: 'assets/pictures/truck.jpg' },
-    { id: 1, name: 'Ready', pictures: 'assets/pictures/truck.jpg' },
-    { id: 2, name: 'Started', pictures: 'assets/pictures/truck.jpg' },
-  ];
-  //bannerMessages: Array<string> = ['Apple', 'Orange', 'Banana'];
-  //bannerMessages = [];
+
+  bannerMessages: { id: number, title: string, description: string, imageUrl: string }[] = new Array;
+  public createImageUrl(input: string)  {
+    return "url(assets/" + input + ".jpg)";
+  }
+  public parseJson (json: { id: number, title: string, description: string, imageId: string }[]) {
+    json.forEach(x => {
+      this.bannerMessages.push({
+        id: x.id,
+        title: x.title,
+        description: x.description,
+        imageUrl: this.createImageUrl(x.imageId)
+      });
+    });
+  }
   constructor() {}
-  // ngOnInit() {
-  //fetch from data base.
-  // }
+  ngOnInit() {
+    setTimeout(() => {
+      let fakeJson = [
+        { id: 0, title: "Available", description: "item is available", imageId: "first" },
+        { id: 1, title: "Ready", description: "item is ready", imageId: "second" },
+        { id: 2, title: "Started", description: "item is started", imageId: "third" },
+    ];
+    this.parseJson(fakeJson);
+    }, 1000);
+  }
+
+  
+>>>>>>> 2a762def89ae8bd595552a89d171f74acebb986e
 }
