@@ -1,7 +1,6 @@
 #container {
-  text-align: center;
-
-  position: absolute;
+  // text-align: center;
+  // position: absolute;
   left: 0;
   right: 0;
   top: 50%;
@@ -16,9 +15,7 @@
 #container p {
   font-size: 16px;
   line-height: 22px;
-
   color: #8c8c8c;
-
   margin: 0;
 }
 
@@ -30,6 +27,30 @@
   // @import "~swiper/scss";
   // @import "~@ionic/angular/css/ionic-swiper";
   width: 100%;
-  height: 140px;
   background-repeat: no-repeat;
+}
+
+#banner-heading {
+  display: flex;
+  justify-content: space-between;
+  color: #ffffff;
+}
+
+// #banner-subtitle,
+// #banner-description {
+//   display: flex;
+//   justify-content: left;
+//   color: #ffffff;
+//   font-size: 10px;
+// }
+
+#banner-subtitle,
+#banner-description {
+  display: flex;
+  justify-content: left;
+  align-content: flex-start;
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+  font-size: 10px;
 }

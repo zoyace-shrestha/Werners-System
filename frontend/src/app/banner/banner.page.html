@@ -1,41 +1,27 @@
 <ion-content [fullscreen]="true">
-  <!-- <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-      <ion-card-title>Card Title</ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content id="test">
-      <a href="https://www.youtube.com/">Click here</a>
-      Keep close to Nature's heart... and break clear away, once in awhile, and
-      climb a mountain or spend a week in the woods. Wash your spirit clean.
-    </ion-card-content>
-  </ion-card> -->
-
   <swiper>
     <ng-template ngFor let-banner [ngForOf]="bannerMessages">
       <ng-template swiperSlide>
         <ion-card id="test" [style.backgroundColor]="banner.backgroundColor">
           <ion-card-header>
-            <ion-card-title>{{ banner.title }}</ion-card-title>
-            <ion-card-subtitle>{{ banner.description }}</ion-card-subtitle>
+            <div id="banner-heading">
+              <ion-card-title id="banner-title"
+                >{{ banner.title }}</ion-card-title
+              >
+              <ion-card-date
+                >{{banner.date.toLocaleDateString()}}</ion-card-date
+              >
+            </div>
           </ion-card-header>
 
-          <ion-card-content>
-            <!-- <a href="https://www.youtube.com/">Click here</a>
-            Keep close to Nature's heart... and break clear away, once in awhile, and
-            climb a mountain or spend a week in the woods. Wash your spirit clean. -->
+          <ion-card-content id="banner-content">
+            <ion-card-p id="banner-subtitle">{{ banner.subtitle}}</ion-card-p>
+            <ion-card-subtitle id="banner-description"
+              >{{ banner.description }}</ion-card-subtitle
+            >
           </ion-card-content>
         </ion-card>
       </ng-template>
     </ng-template>
   </swiper>
 </ion-content>
-
-<!-- <div>
-  <img/>
-  <div class="textcontainer" >
-    <label>placeholder </label>
-    <p>lasdfjladsjfldsfj</p>
-  </div>
-</div> -->
