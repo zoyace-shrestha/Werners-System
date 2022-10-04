@@ -6,51 +6,64 @@ import { Component } from '@angular/core';
   styleUrls: ['banner.page.scss'],
 })
 export class BannerPage {
+
   bannerMessages: {
     id: number;
     title: string;
     description: string;
-    imageUrl: string;
+    backgroundColor: string;
   }[] = new Array();
-  public createImageUrl(input: string) {
-    return 'url(assets/' + input + '.jpg)';
-  }
+
   public parseJson(
-    json: { id: number; title: string; description: string; imageId: string }[]
+    json: { id: number; title: string; description: string; backgroundColor: string }[]
   ) {
     json.forEach((x) => {
       this.bannerMessages.push({
         id: x.id,
         title: x.title,
         description: x.description,
-        imageUrl: this.createImageUrl(x.imageId),
+        backgroundColor: x.backgroundColor,
       });
     });
   }
+
   constructor() {}
+
   ngOnInit() {
+
     setTimeout(() => {
-      let fakeJson = [
+      let sampleData = [
         {
           id: 0,
-          title: '',
-          description: '',
-          imageId: 'first',
+          title: 'Banner 1',
+          description: 'Description for banner 1',
+          backgroundColor: backgroundColors.primary,
         },
         {
           id: 1,
-          title: '',
-          description: '',
-          imageId: 'second',
+          title: 'Banner 2',
+          description: 'Description for banner 2',
+          backgroundColor: backgroundColors.secondary,
         },
         {
           id: 2,
-          title: '',
-          description: '',
-          imageId: 'third',
+          title: 'Banner 3',
+          description: 'Description for banner 3',
+          backgroundColor: backgroundColors.tertiary,
         },
       ];
-      this.parseJson(fakeJson);
+      this.parseJson(sampleData);
     }, 1000);
+
   }
+}
+
+const backgroundColors = 
+{
+  white: '#FFFFFF',
+  green: '#218719',
+  red: '#C03131',
+  tertiary: '#163762',
+  secondary: '#1877F2',
+  primary: '#3369B4',
 }
