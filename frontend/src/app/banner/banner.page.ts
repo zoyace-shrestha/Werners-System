@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import SwiperCore, {Autoplay, Navigation, SwiperOptions, Keyboard} from 'swiper';
+import { AutoplayOptions } from 'swiper/types';
+
+SwiperCore.use([Autoplay, Navigation, Keyboard]);
 
 @Component({
   selector: 'app-banner',
@@ -6,6 +10,15 @@ import { Component } from '@angular/core';
   styleUrls: ['banner.page.scss'],
 })
 export class BannerPage {
+  autoplayOprtions: AutoplayOptions = {
+    delay: 500,
+    disableOnInteraction: false
+  };
+  config: SwiperOptions = {
+    navigation: true,
+    autoplay: this.autoplayOprtions,
+    keyboard: true
+  };
   bannerMessages: {
     id: number;
     title: string;

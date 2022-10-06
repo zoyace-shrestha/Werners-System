@@ -26,6 +26,8 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 // test
-@import "~@ionic/angular/css/ionic-swiper";
+@import "@ionic/angular/css/ionic-swiper";
 @import "swiper/scss";
-@import "swiper/css/effect-fade";
+@import "swiper/scss/autoplay";
+@import "swiper/scss/navigation";
+@import "swiper/scss/keyboard";

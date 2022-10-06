@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-  <swiper>
+  <swiper [config]="config">
     <ng-template ngFor let-banner [ngForOf]="bannerMessages">
       <ng-template swiperSlide>
         <ion-card id="test" [style.backgroundColor]="banner.backgroundColor">
@@ -8,14 +8,13 @@
               <ion-card-title id="banner-title"
                 >{{ banner.title }}</ion-card-title
               >
-              <ion-card-date
-                >{{banner.date.toLocaleDateString()}}</ion-card-date
-              >
+              <p
+                >{{banner.date.toLocaleDateString()}}</p>
             </div>
           </ion-card-header>
 
           <ion-card-content id="banner-content">
-            <ion-card-p id="banner-subtitle">{{ banner.subtitle}}</ion-card-p>
+            <p id="banner-subtitle">{{ banner.subtitle}}</p>
             <ion-card-subtitle id="banner-description"
               >{{ banner.description }}</ion-card-subtitle
             >
