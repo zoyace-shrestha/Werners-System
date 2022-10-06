@@ -10,17 +10,17 @@ namespace mobile-app-messaging-module.Controllers
 
 public class AnnouncementsController : AnnouncementController
 {
-    private readonly IAnnouncementRepo _announcementRepo;
+    private readonly IAnnouncementHelper _announcementRepo;
 
-    public AnnouncementsController(IAnnouncementRepo announcementRepo)
+    public AnnouncementsController(IAnnouncementHelper announcementHelper)
     {
-        _announcementRepo = announcementRepo;
+        _announcementHelper = announcementHelper;
     }
 
     [HttpGet("")]
     public async Task<IAnnouncementResult> GetAllAnnouncements()
     {
-        var announcements = await _announcementRepo.GetAllAnnouncementsAsync();
+        var announcements = await _announcementHelper.GetAllAnnouncementsAsync();
         return OK(announcements);
     }
 }
