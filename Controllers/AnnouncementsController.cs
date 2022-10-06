@@ -10,7 +10,7 @@ namespace mobile-app-messaging-module.Controllers
 
 public class AnnouncementsController : AnnouncementController
 {
-    private readonly IAnnouncementHelper _announcementRepo;
+    private readonly IAnnouncementHelper _announcementHelper;
 
     public AnnouncementsController(IAnnouncementHelper announcementHelper)
     {
