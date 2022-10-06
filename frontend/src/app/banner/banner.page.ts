@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component,ViewEncapsulation, ViewChild  } from '@angular/core';
 import SwiperCore, {Autoplay, Navigation, SwiperOptions, Keyboard} from 'swiper';
+import { SwiperComponent } from 'swiper/angular';
 import { AutoplayOptions } from 'swiper/types';
 
 SwiperCore.use([Autoplay, Navigation, Keyboard]);
@@ -10,14 +11,16 @@ SwiperCore.use([Autoplay, Navigation, Keyboard]);
   styleUrls: ['banner.page.scss'],
 })
 export class BannerPage {
-  autoplayOprtions: AutoplayOptions = {
-    delay: 500,
-    disableOnInteraction: false
+  @ViewChild('swiperSlideShow') swiperSlideShow!: SwiperComponent;
+  autoplayOptions: AutoplayOptions = {
+    delay: 1000,
+    disableOnInteraction: false,
   };
   config: SwiperOptions = {
     navigation: true,
-    autoplay: this.autoplayOprtions,
-    keyboard: true
+    autoplay: this.autoplayOptions,
+    keyboard: true,
+    
   };
   bannerMessages: {
     id: number;
@@ -108,8 +111,10 @@ export class BannerPage {
         },
       ];
       this.parseJson(sampleData);
+      this.swiperSlideShow.swiperRef.autoplay.start();
     }, 1000);
   }
+  
 }
 
 const backgroundColors = {

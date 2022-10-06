@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-  <swiper [config]="config">
+  <swiper [config]="config" #swiperSlideShow>
     <ng-template ngFor let-banner [ngForOf]="bannerMessages">
       <ng-template swiperSlide>
         <ion-card id="test" [style.backgroundColor]="banner.backgroundColor">
