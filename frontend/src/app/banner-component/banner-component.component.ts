@@ -1,4 +1,4 @@
-import { Component, ViewChild  } from '@angular/core';
+import { Component, ViewChild, OnInit  } from '@angular/core';
 import SwiperCore, {Autoplay, SwiperOptions, Keyboard} from 'swiper';
 import { SwiperComponent } from 'swiper/angular';
 import { AutoplayOptions } from 'swiper/types';
@@ -6,11 +6,12 @@ import { AutoplayOptions } from 'swiper/types';
 SwiperCore.use([Autoplay, Keyboard]);
 
 @Component({
-  selector: 'app-banner',
-  templateUrl: 'banner.page.html',
-  styleUrls: ['banner.page.scss'],
+  selector: 'app-banner-component',
+  templateUrl: './banner-component.component.html',
+  styleUrls: ['./banner-component.component.scss'],
 })
-export class BannerPage {
+export class BannerComponentComponent implements OnInit {
+  
   @ViewChild('swiperSlideShow') swiperSlideShow!: SwiperComponent;
   autoplayOptions: AutoplayOptions = {
     delay: 3000,
@@ -117,7 +118,9 @@ export class BannerPage {
       this.swiperSlideShow.swiperRef.autoplay.start();
     }, 1000);
   }
+
 }
+
 
 const colorScheme = {
   white: {
