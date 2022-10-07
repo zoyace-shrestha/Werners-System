@@ -16,7 +16,8 @@ export class BannerComponentComponent implements OnInit {
   autoplayOptions: AutoplayOptions = {
     delay: 3000,
     disableOnInteraction: false,
-  };
+    stopOnLastSlide: true
+    };
   config: SwiperOptions = {
     autoplay: this.autoplayOptions,
     keyboard: true,
