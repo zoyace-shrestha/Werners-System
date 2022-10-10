@@ -6,14 +6,15 @@ import { HomePage } from './home.page';
 import { SwiperModule } from 'swiper/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 import { BannerComponentComponent } from '../banner-component/banner-component.component';
+import { MapComponent } from '../map/map.component';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    SwiperModule
+    SwiperModule,
   ],
-  declarations: [HomePage, BannerComponentComponent]
+  declarations: [HomePage, BannerComponentComponent, MapComponent],
 })
 export class HomePageModule {}
