@@ -6,8 +6,8 @@ import { HomePage } from './home.page';
 import { SwiperModule } from 'swiper/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 import { BannerComponentComponent } from '../banner-component/banner-component.component';
-import { MapComponent } from '../map/map.component';
-import {BannerEditComponent} from  '../banner-edit-component/banner-edit.component';
+
+import { BannerEditComponent } from '../banner-edit-component/banner-edit.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +16,6 @@ import {BannerEditComponent} from  '../banner-edit-component/banner-edit.compone
     HomePageRoutingModule,
     SwiperModule,
   ],
-  declarations: [HomePage, BannerComponentComponent, MapComponent, BannerEditComponent],
+  declarations: [HomePage, BannerComponentComponent, BannerEditComponent],
 })
 export class HomePageModule {}
