@@ -14,8 +14,8 @@ import { BannerEditComponent } from '../banner-edit-component/banner-edit.compon
     CommonModule,
     FormsModule,
     IonicModule,
-    AdministrationPagePageRoutingModule
+    AdministrationPagePageRoutingModule,
   ],
-  declarations: [AdministrationPagePage, BannerEditComponent]
+  declarations: [AdministrationPagePage, BannerEditComponent],
 })
 export class AdministrationPagePageModule {}

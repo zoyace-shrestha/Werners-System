@@ -11,9 +11,16 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
-  },  {
+  },
+  {
     path: 'administration-page',
-    loadChildren: () => import('./administration-page/administration-page.module').then( m => m.AdministrationPagePageModule)
+    loadChildren: () =>
+      import('./administration-page/administration-page.module').then(
+        (m) => m.AdministrationPagePageModule
+      ),
+  },  {
+    path: 'create-banner',
+    loadChildren: () => import('./create-banner/create-banner.module').then( m => m.CreateBannerPageModule)
   },
 
 ];
