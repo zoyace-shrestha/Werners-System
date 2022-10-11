@@ -11,8 +11,16 @@
 #dateid {
   border-radius: 30px;
   background-color: aquamarine;
-  margin-left: auto;
-  margin-right: auto;
+  margin-right: 10px;
+  // margin-left: auto;
+  // margin-right: auto;
   
   padding: 10px;
 }
+
+#bannerlabel {
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
