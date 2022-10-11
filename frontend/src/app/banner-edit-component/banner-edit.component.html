@@ -9,19 +9,22 @@
   </ion-row>
 <ion-row style="background-color: rgba(255, 255, 255, 0.605); margin-bottom: 5px;">
   <ion-grid id="bannergrid">
-    <ion-row>
-      <ion-col >
-        <ion-button><ion-icon name="swap-vertical-outline"></ion-icon></ion-button>
-      </ion-col>
-      <ion-col id="bannerlabel">
-        <ion-label>TITLE alsdjfas;ld l;asdjfa</ion-label>
-      </ion-col>
-      <ion-col class="ion-align-self-center" id="bannercol">
-        <ion-note id="dateid">Date of Notifcation</ion-note>
-        <ion-button><ion-icon name="trash-outline"></ion-icon></ion-button>
-        <ion-button><ion-icon name="pencil-outline"></ion-icon></ion-button>
-      </ion-col>
-    </ion-row>
+    <ng-template ngFor let-banner [ngForOf]="bannerMessages">
+      <ion-row>
+        <ion-col >
+          <ion-button><ion-icon name="swap-vertical-outline"></ion-icon></ion-button>
+        </ion-col>
+        <ion-col id="bannerlabel">
+          <ion-label>{{banner.title}}</ion-label>
+        </ion-col>
+        <ion-col class="ion-align-self-center" id="bannercol">
+          <ion-note id="dateid">{{banner.date.toLocaleDateString()}}
+          </ion-note>
+          <ion-button><ion-icon name="trash-outline"></ion-icon></ion-button>
+          <ion-button><ion-icon name="pencil-outline"></ion-icon></ion-button>
+        </ion-col>
+      </ion-row>
+    </ng-template>
   </ion-grid>
 </ion-row>
 
