@@ -1,25 +1,25 @@
-import { Component, ViewChild  } from '@angular/core';
-import SwiperCore, {Autoplay, SwiperOptions, Keyboard} from 'swiper';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import SwiperCore, { Autoplay, SwiperOptions, Keyboard } from 'swiper';
 import { SwiperComponent } from 'swiper/angular';
 import { AutoplayOptions } from 'swiper/types';
 
 SwiperCore.use([Autoplay, Keyboard]);
 
 @Component({
-  selector: 'app-banner',
-  templateUrl: 'banner.page.html',
-  styleUrls: ['banner.page.scss'],
+  selector: 'app-banner-component',
+  templateUrl: './banner-component.component.html',
+  styleUrls: ['./banner-component.component.scss'],
 })
-export class BannerPage {
+export class BannerComponentComponent implements OnInit {
   @ViewChild('swiperSlideShow') swiperSlideShow!: SwiperComponent;
   autoplayOptions: AutoplayOptions = {
     delay: 3000,
     disableOnInteraction: false,
+    stopOnLastSlide: true,
   };
   config: SwiperOptions = {
     autoplay: this.autoplayOptions,
     keyboard: true,
-    
   };
   bannerMessages: {
     id: number;
@@ -33,15 +33,15 @@ export class BannerPage {
 
   public parseJson(
     json: {
-      id: number,
-      title: string,
-      subtitle: string,
-      description: string,
+      id: number;
+      title: string;
+      subtitle: string;
+      description: string;
       colorScheme: {
-        background: string,
-        text: string
-      },
-      date: Date
+        background: string;
+        text: string;
+      };
+      date: Date;
     }[]
   ) {
     json.forEach((x) => {
@@ -75,7 +75,8 @@ export class BannerPage {
           id: 1,
           title: 'Werner Life',
           subtitle: 'Life on the Road Video Series',
-          description: 'The latest episode of Life on the Road is available now!',
+          description:
+            'The latest episode of Life on the Road is available now!',
           colorScheme: colorScheme.secondary,
           date: new Date(),
         },
@@ -122,26 +123,26 @@ export class BannerPage {
 const colorScheme = {
   white: {
     background: '#FFFFFF',
-    text: 'black'
+    text: 'black',
   },
   success: {
     background: '#218719',
-    text: 'white'
+    text: 'white',
   },
   danger: {
     background: '#C03131',
-    text: 'white'
+    text: 'white',
   },
   tertiary: {
     background: '#163762',
-    text: 'white'
+    text: 'white',
   },
   secondary: {
     background: '#1877F2',
-    text: 'white'
+    text: 'white',
   },
   primary: {
     background: '#3369B4',
-    text: 'white'
-  }
+    text: 'white',
+  },
 };
