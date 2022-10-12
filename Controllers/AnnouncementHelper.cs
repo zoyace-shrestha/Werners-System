@@ -2,25 +2,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using mobile_app_messaging_module.DataModels;
 
 public class AnnouncementHelper : IAnnouncementHelper
 {
 
-	private readonly DBContext _context;
+	private readonly aruizContext _context;
 
-	public AnnouncementHelper(DBContext context)
+	public AnnouncementHelper(aruizContext context)
 	{
 		_context = context; 
 	}
 
-	public async Task<List<AnnouncementModel>> GetAllAnnouncementsAsync()
+	public List<Annoucement> GetAllAnnouncementsAsync()
     {
-		var announcements = await _context.Announcements.Select(x=> new AnnouncementModel()
-        {
+		var announcements = _context.Announcements.Select(x => new Annoucement()
+		{
 			// Insert Announcement fields.
 
-        }).ToListAsync();
+		}).ToList();
 
 		return announcements;
     }

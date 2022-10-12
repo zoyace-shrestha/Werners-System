@@ -12,36 +12,47 @@ using Microsoft.EntityFrameworkCore;
 
 public class Startup
 {
-	public Startup(IConfiguration configuration)
-	{
-		Configuartion = configuration;
-	}
-
-	public IConfiguration Configuration { get; }
-
-	public void ConfigureServices(IServiceCollection services)
+    public Startup(IConfiguration configuration)
     {
-		//services.addControllers();
+        Configuration = configuration;
+    }
 
-		services.AddDbContext<aruizContext>(options =>
-					options.UseMySQL(Configuration.GetConnectionString("aruiz")));
-	}
+    public IConfiguration Configuration { get; }
 
-	public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public void ConfigureServices(IServiceCollection services)
     {
-		if (env.IsDevelopment())
-		{
-			app.UseDeveloperExceptionPage();
-		}
+        //services.addControllers();
+
+        //services.AddDbContext<aruizContext>(options =>
+        //                options.UseSqlServer("Data Source=cse.unl.edu:3306; Initial Catalog=aruiz; User ID=aruiz; Password=uHVUeBooNA8"));
 
 
+        //services.AddDbContextPool<aruizContext>(options => options
+        //.UseMySql(
+        //    Configuration.GetConnectionString("aruiz"),
+        //    mySqlOptions => mySqlOptions.ServerVersion(new Version(10, 5, 4), ServerType.MariaDb)
+        //);
 
-	}
+        string _connectionString = Configuration.GetConnectionString("aruiz");
+        services.AddDbContext<aruizContext>(
+            options => options.UseMySql(
+            _connectionString,
+            ServerVersion.AutoDetect(_connectionString)
+        ));
+    }
+
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+        }
+    }
 
 
-	//app.UseEndpoints(endpoints =>
-      //      {
-                //  #TODO
-        //    });
+    //app.UseEndpoints(endpoints =>
+    //      {
+    //  #TODO
+    //    });
 
 }

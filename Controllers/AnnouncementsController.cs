@@ -2,26 +2,36 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using mobile_app_messaging_module.DataModels;
 
-namespace mobile-app-messaging-module.Controllers
+namespace mobile_app_messaging_module.Controllers
 {
+
     [Route("[controller]")]
     [ApiController]
 
-public class AnnouncementsController : AnnouncementController
-{
-    private readonly IAnnouncementHelper _announcementHelper;
+    public class AnnouncementsController : ControllerBase
+        {
+        private readonly AnnouncementHelper _announcementHelper;
 
-    public AnnouncementsController(IAnnouncementHelper announcementHelper)
-    {
-        _announcementHelper = announcementHelper;
-    }
+        public AnnouncementsController(AnnouncementHelper announcementHelper)
+        {
+            _announcementHelper = announcementHelper;
+        }
 
-    [HttpGet("")]
-    public async Task<IAnnouncementResult> GetAllAnnouncements()
-    {
-        var announcements = await _announcementHelper.GetAllAnnouncementsAsync();
-        return OK(announcements);
+        [HttpGet("")]
+        public List<Annoucement> GetAllAnnouncements()
+        {
+            var announcements = _announcementHelper.GetAllAnnouncementsAsync();
+            return announcements;
+        }
+        //[HttpGet("")]
+        //public List<Annoucement> GetAllAnnouncements()
+        //{
+        //    var announcements = await _announcementHelper.GetAllAnnouncementsAsync();
+        //    return OK(announcements);
+        //}
+
     }
-}
 }
