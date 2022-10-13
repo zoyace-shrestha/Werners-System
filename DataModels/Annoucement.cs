@@ -1,16 +1,19 @@
-﻿namespace mobile_app_messaging_module.DataModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace mobile_app_messaging_module.DataModels
 {
     public class Annoucement
     {
-        public int? announcementId { get; set; }
-        public string? Title { get; set; }
-        public string? Description { get; set; }
-        public string? Type { get; set; }
-        public string? Link { get; set; }
-        public string? Background { get; set; }
-        public DateOnly? PublishDate { get; set; }
-        public DateOnly? ExpirationDate { get; set; }
-        public string? CheckSum { get; set; }
+        [Key]
+        public int idAnnoucements { get; set; }
+        public string? title { get; set; }
+        public string? description { get; set; }
+        public string? type { get; set; }
+        public string? link { get; set; }
+        public string? background { get; set; }
+        public DateOnly? publishDate { get; set; }
+        public DateOnly? expirationDate { get; set; }
+        public string? checkSum { get; set; }
 
     }
 }

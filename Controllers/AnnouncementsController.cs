@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using mobile_app_messaging_module.DataModels;
+using mobile_app_messaging_module.Helpers;
 
 namespace mobile_app_messaging_module.Controllers
 {
@@ -12,26 +14,55 @@ namespace mobile_app_messaging_module.Controllers
     [ApiController]
 
     public class AnnouncementsController : ControllerBase
-        {
-        private readonly AnnouncementHelper _announcementHelper;
+    {
+        //private readonly Helpers.AnnouncementHelper _announcementHelper;
+        private readonly aruizContext _context;
 
-        public AnnouncementsController(AnnouncementHelper announcementHelper)
+        //public AnnouncementsController(Helpers.AnnouncementHelper announcementHelper)
+        //{
+        //    _announcementHelper = announcementHelper;
+        //}
+
+        public AnnouncementsController(aruizContext context)
         {
-            _announcementHelper = announcementHelper;
+            _context = context;
         }
+
+        //private readonly IConfiguration configuration; 
+
+        //public AnnouncementsController(IConfiguration config) { 
+        //    configuration = config;
+        //}
 
         [HttpGet("")]
         public List<Annoucement> GetAllAnnouncements()
         {
-            var announcements = _announcementHelper.GetAllAnnouncementsAsync();
+            //var announcementHelper = new AnnouncementHelper();
+            //var announcements = announcementHelper.GetAllAnnouncements();
+
+            var announcements = _context.Announcements.Select(x => new Annoucement()
+            {
+                idAnnoucements = x.idAnnoucements,
+                title = x.title,
+                description = x.description,
+                type = x.type,
+                link = x.link,
+                background = x.background,
+                publishDate = x.publishDate,
+                expirationDate = x.expirationDate,
+                checkSum = x.checkSum
+
+            }).ToList();
+
             return announcements;
         }
-        //[HttpGet("")]
-        //public List<Annoucement> GetAllAnnouncements()
-        //{
-        //    var announcements = await _announcementHelper.GetAllAnnouncementsAsync();
-        //    return OK(announcements);
-        //}
+
+        [HttpGet("test")]
+        public JsonResult test()
+        {
+            return new JsonResult(new { message = "test" });
+            //return new JsonResult(new { message = "test", config = configuration, connectionString = configuration.GetConnectionString("aruiz")});
+        }
 
     }
 }

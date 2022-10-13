@@ -2,26 +2,36 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using mobile_app_messaging_module.DataModels;
 
-public class AnnouncementHelper : IAnnouncementHelper
+namespace mobile_app_messaging_module.Helpers
 {
-
-	private readonly aruizContext _context;
-
-	public AnnouncementHelper(aruizContext context)
+	public class AnnouncementHelper
 	{
-		_context = context; 
-	}
 
-	public List<Annoucement> GetAllAnnouncementsAsync()
-    {
-		var announcements = _context.Announcements.Select(x => new Annoucement()
+		private readonly aruizContext _context;
+
+		public AnnouncementHelper(aruizContext context)
 		{
-			// Insert Announcement fields.
+			_context = context;
+		}
 
-		}).ToList();
+		//public AnnouncementHelper() { }
 
-		return announcements;
-    }
+		//public List<Annoucement> GetAllAnnouncements()
+		//{
+		//	var context = new aruizContext();
+		//	var announcements = context.Announcements.Select(x => new Annoucement()
+		//	{
+		//		 Insert Announcement fields.
+
+
+		//	}).ToList();
+
+		//	var announcements = new List<Annoucement>();
+
+		//	return announcements;
+		//}
+	}
 }

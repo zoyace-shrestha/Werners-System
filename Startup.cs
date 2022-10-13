@@ -21,18 +21,9 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        //services.addControllers();
+        services.AddControllersWithViews();
 
-        //services.AddDbContext<aruizContext>(options =>
-        //                options.UseSqlServer("Data Source=cse.unl.edu:3306; Initial Catalog=aruiz; User ID=aruiz; Password=uHVUeBooNA8"));
-
-
-        //services.AddDbContextPool<aruizContext>(options => options
-        //.UseMySql(
-        //    Configuration.GetConnectionString("aruiz"),
-        //    mySqlOptions => mySqlOptions.ServerVersion(new Version(10, 5, 4), ServerType.MariaDb)
-        //);
-
+        //services.AddSingleton<IConfiguration>(Configuration);
         string _connectionString = Configuration.GetConnectionString("aruiz");
         services.AddDbContext<aruizContext>(
             options => options.UseMySql(
@@ -47,12 +38,23 @@ public class Startup
         {
             app.UseDeveloperExceptionPage();
         }
+
+        app.UseHttpsRedirection();
+
+        app.UseStaticFiles();
+
+        app.UseRouting();
+
+        //app.UseAuthorization();
+
+        //endpoints
+
+        app.UseEndpoints(endpoints => {
+            endpoints.MapControllers();
+            //endpoints.MapControllerRoute(
+            //    name: "default",
+            //    pattern: "{controller}/{action=Index}/{id?}");
+        });
+
     }
-
-
-    //app.UseEndpoints(endpoints =>
-    //      {
-    //  #TODO
-    //    });
-
 }
