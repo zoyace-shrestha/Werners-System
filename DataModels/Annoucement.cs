@@ -11,8 +11,8 @@ namespace mobile_app_messaging_module.DataModels
         public string? type { get; set; }
         public string? link { get; set; }
         public string? background { get; set; }
-        public DateOnly? publishDate { get; set; }
-        public DateOnly? expirationDate { get; set; }
+        public DateTime? publishDate { get; set; }
+        public DateTime? expirationDate { get; set; }
         public string? checkSum { get; set; }
 
     }
