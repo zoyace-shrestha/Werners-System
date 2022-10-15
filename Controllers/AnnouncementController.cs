@@ -24,26 +24,6 @@ namespace mobile_app_messaging_module.Controllers
         }
 
 
-
-        /*
-         
-         * GetOne - Updating an annoucement 
-         * /update/{id}
-         * 
-         * GetActive - Drivers
-         * 
-         * GetAll - Admin
-         * Initial Annoucements
-         * 
-         * Delete
-         * /delete/{id}
-         * 
-         * Save (Update / Create)
-         * 
-         * Reorder
-
-         */
-
         [HttpGet("{annoucementId}")]
         public JsonResult GetOne(int annoucementId)
         {
@@ -72,11 +52,31 @@ namespace mobile_app_messaging_module.Controllers
             return new JsonResult( new { announcementId = announcementId });
         }
 
+        [HttpPost("create")]
+        public JsonResult Create([FromBody()] Annoucement announcement)
+        {
+            announcementManager.Create(announcement);
+            return new JsonResult(announcement);
+        }
+
         [HttpPost("")]
         public JsonResult Save([FromBody()] Annoucement announcement)
         {
             announcementManager.Save(announcement);
             return new JsonResult(announcement);
         }
+
+
+        /*
+         
+         Create {Annoucement w/o CheckSum Property}
+            -> Backend creates checksum property
+
+        Get {Annoucement w CheckSum Property}
+
+        Update Annoucment
+            -> Post with checksum
+         
+         */
     }
 }
