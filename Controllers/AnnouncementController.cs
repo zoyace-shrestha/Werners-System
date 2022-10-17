@@ -47,9 +47,9 @@ namespace mobile_app_messaging_module.Controllers
         [HttpDelete("delete/{announcementId}")]
         public JsonResult Delete(int announcementId)
         {
-            announcementManager.Delete(announcementId);
+            var deleteCount = announcementManager.Delete(announcementId);
             // Return the number of rows deleted (hopefully just one...)
-            return new JsonResult( new { announcementId = announcementId });
+            return new JsonResult( new { deleteCount = deleteCount });
         }
 
         [HttpPost("create")]
@@ -59,24 +59,40 @@ namespace mobile_app_messaging_module.Controllers
             return new JsonResult(announcement);
         }
 
-        [HttpPost("")]
-        public JsonResult Save([FromBody()] Annoucement announcement)
+
+        [HttpPost("update")]
+        public JsonResult Update([FromBody()] Annoucement announcement)
         {
-            announcementManager.Save(announcement);
+            announcementManager.Update(announcement);
             return new JsonResult(announcement);
         }
 
-
         /*
-         
-         Create {Annoucement w/o CheckSum Property}
-            -> Backend creates checksum property
-
-        Get {Annoucement w CheckSum Property}
-
-        Update Annoucment
-            -> Post with checksum
-         
+         * Test Endpoint used to generate test announcements
+         * Remove when complete
          */
+        [HttpPost("generateTitles")]
+        public JsonResult generateTitles()
+        {
+            var list = new List<Annoucement>();
+            var tomorrow = DateTime.Now;
+            tomorrow.AddDays(1);
+            var ann = new Annoucement()
+            {
+                title = "Title",
+                description = "Description",
+                type = "Type",
+                link = "Link",
+                background = "Background",
+                publishDate = DateTime.Now,
+                expirationDate = tomorrow,
+                isDraft = true,
+            };
+            list.Add(ann);
+            _context.AddRange(list);
+            _context.SaveChanges();
+            return new JsonResult(list);
+        }
+
     }
 }

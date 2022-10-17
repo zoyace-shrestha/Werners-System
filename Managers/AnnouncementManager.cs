@@ -11,9 +11,10 @@ namespace mobile_app_messaging_module.Managers
         }
 
 
-        public Annoucement GetOne(int announcementID)
+        public Annoucement? GetOne(int announcementID)
         {
-            return new Annoucement();
+            var announcement = _context.Announcements.Where(e => e.idAnnoucements == announcementID).FirstOrDefault();
+            return announcement;
         }
 
         public List<Annoucement> GetAll()
@@ -29,53 +30,57 @@ namespace mobile_app_messaging_module.Managers
                 background = x.background,
                 publishDate = x.publishDate,
                 expirationDate = x.expirationDate,
-                checkSum = x.checkSum
-
+                isDraft = x.isDraft,
             }).ToList();
 
             return announcements;
         }
 
-        public List<Annoucement> GetActive()
+        public List<Annoucement>? GetActive()
         {
-            return new List<Annoucement>();
+            var announcements = _context.Announcements.Where(e => e.publishDate < DateTime.Now && e.expirationDate > DateTime.Now).ToList();
+            return announcements;
         }
 
-        public Annoucement Delete(int announcementID)
+        public int Delete(int announcementID)
         {
-            var announcement = new Annoucement();
-            announcement.idAnnoucements = announcementID;
-            _context.Remove(announcement);
-            _context.SaveChanges();
-            return announcement;
+
+            var announcementCount = _context.Announcements.Where(e => e.idAnnoucements == announcementID).Count();
+
+            if (announcementCount > 0)
+            {
+                var announcement = new Annoucement();
+                announcement.idAnnoucements = announcementID;
+                _context.Remove(announcement);
+                _context.SaveChanges();
+            }
+
+            return announcementCount;
         }
 
         public Annoucement Create(Annoucement annoucement)
         {
-            var newAnnouncement = new Annoucement
-            {
-                title = annoucement.title,
-                description = annoucement.description,
-                type = annoucement.type,
-                link = annoucement.link,
-                background = annoucement.background,
-                publishDate = annoucement.publishDate,
-                expirationDate = annoucement.expirationDate,
-                checkSum = "0" // Hash Method Here
-            };
+         
 
             // TODO: Add announcement validation information here
             // Ask Sponsors what fields are required for an announcement to be valid
 
-            _context.Entry(newAnnouncement).State = Microsoft.EntityFrameworkCore.EntityState.Added;
+            _context.Entry(annoucement).State = Microsoft.EntityFrameworkCore.EntityState.Added;
             _context.SaveChanges();
-            return newAnnouncement;
+            return annoucement;
         }
 
-        public Annoucement Save(Annoucement annoucement)
+
+        public Annoucement Update(Annoucement annoucement)
         {
-            return new Annoucement();
-        }
+ 
 
+            // TODO: Add announcement validation information here
+            // Ask Sponsors what fields are required for an announcement to be valid
+
+            _context.Update(annoucement);
+            _context.SaveChanges();
+            return annoucement;
+        }
     }
 }
