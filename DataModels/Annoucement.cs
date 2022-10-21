@@ -13,7 +13,7 @@ namespace mobile_app_messaging_module.DataModels
         public string? background { get; set; }
         public DateTime? publishDate { get; set; }
         public DateTime? expirationDate { get; set; }
-        public string? checkSum { get; set; }
+        public Boolean? isDraft { get; set; }
 
     }
 }
