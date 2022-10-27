@@ -30,6 +30,7 @@
     "popper.js": "^1.16.0",
     "run-script-os": "^1.1.6",
     "rxjs": "~7.5.5",
+    "swiper": "^8.4.4",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.6"
   },
@@ -37,6 +38,7 @@
     "@angular-devkit/build-angular": "^14.0.3",
     "@angular/cli": "^14.0.3",
     "@angular/compiler-cli": "^14.0.3",
+    "@ionic/angular-toolkit": "latest",
     "@types/jasmine": "~4.0.3",
     "@types/jasminewd2": "~2.0.10",
     "@types/node": "^18.0.0",
@@ -46,11 +48,9 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.0.0",
-    "typescript": "~4.7.4",
-    "@ionic/angular-toolkit": "latest"
+    "typescript": "~4.7.4"
   },
   "overrides": {
     "autoprefixer": "10.4.5"
-  },
-  "optionalDependencies": {}
+  }
 }

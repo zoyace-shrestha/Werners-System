@@ -11,6 +11,8 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AnnouncementCardComponent } from './announcement-card/announcement-card.component';
 import { IonicModule } from '@ionic/angular';
+import { AnnouncementBannerComponent } from './announcement-banner/announcement-banner.component';
+import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { IonicModule } from '@ionic/angular';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    AnnouncementCardComponent
+    AnnouncementCardComponent,
+    AnnouncementBannerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -30,7 +33,8 @@ import { IonicModule } from '@ionic/angular';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ]),
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    SwiperModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
