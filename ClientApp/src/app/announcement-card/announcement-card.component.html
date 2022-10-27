@@ -1,39 +1,14 @@
 <div *ngIf="announcement">
   <ion-card id="announcement-card" color="{{announcement.background}}">
     <ion-card-header id="heading-container">
-      <div id="banner-heading">
-        <ion-card-title id="banner-title">{{announcement.type}}</ion-card-title>
+      <div id="announcement-heading">
+        <ion-card-title id="announcement-type">{{announcement.type}}</ion-card-title>
         <span id="announcement-date">{{ announcement.expirationDate.toLocaleDateString(undefined, {year: 'numeric', month: 'short', day: 'numeric'}) }}</span>
       </div>
-      <ion-card-subtitle>{{announcement.title}}</ion-card-subtitle>
+      <ion-card-subtitle id="announcement-title">{{announcement.title}}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content id="announcement-description">
       {{announcement.description}}
     </ion-card-content>
   </ion-card>
 </div>
-<!-- <div *ngIf="announcement">
-  <ion-content>
-    <ion-card id="bannerwid" [style.backgroundColor]="announcement.background">
-      <ion-card-header id="banner-header-row">
-        <div id="banner-heading">
-          <ion-card-title id="banner-title">
-            {{ announcement.title }}
-          </ion-card-title>
-          <p>
-            {{ announcement.expirationDate.toLocaleDateString(undefined, {year: 'numeric', month: 'short', day: 'numeric'}) }}
-          </p>
-        </div>
-      </ion-card-header>
-      <ion-card-content id="banner-content">
-        <p id="banner-subtitle">
-          {{ announcement.type }}
-        </p>
-        <ion-card-subtitle
-          id="banner-description">
-          {{ announcement.description }}
-        </ion-card-subtitle>
-      </ion-card-content>
-    </ion-card>
-  </ion-content>
-</div> -->

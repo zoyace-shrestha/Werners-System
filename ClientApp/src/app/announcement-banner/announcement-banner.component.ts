@@ -16,14 +16,14 @@ SwiperCore.use([Autoplay, Keyboard, Pagination]);
 export class AnnouncementBannerComponent implements OnInit {
 
   @ViewChild('swiperSlideShow') swiperSlideShow!: SwiperComponent;
-  // autoplayOptions: AutoplayOptions = {
-  //   // delay: 3000,
-  //   disableOnInteraction: false,
-  //   stopOnLastSlide: true,
-  // };
+  autoplayOptions: AutoplayOptions = {
+    delay: 3000,
+    disableOnInteraction: false,
+    stopOnLastSlide: true,
+  };
   config: SwiperOptions = {
     slidesPerView: 1,
-    // autoplay: this.autoplayOptions,
+    autoplay: this.autoplayOptions,
     keyboard: true,
     pagination: true,
   };
@@ -37,7 +37,7 @@ export class AnnouncementBannerComponent implements OnInit {
   gen(): Array<Announcement> {
     let ret = Array<Announcement>()
 
-    for(let i = 0; i < 2; i++) {
+    for(let i = 0; i < 10; i++) {
       let temp: Announcement = {
         id: 1,
         title: "2022 June Associate Recognition Ceremony",
@@ -54,13 +54,14 @@ export class AnnouncementBannerComponent implements OnInit {
     return ret;
   }
 
-  announcementList?: Array<Announcement>
+  // announcementList?: Array<Announcement>
+  announcementList: Array<Announcement> = this.gen()
 
   constructor() { }
 
   ngOnInit(): void {
     setTimeout( () => {
-      this.announcementList = this.gen();
+      // this.announcementList = this.gen();
       this.swiperSlideShow.swiperRef.autoplay.start(); 
       // console.log(this.swiperSlideShow.swiperRef)
     }
