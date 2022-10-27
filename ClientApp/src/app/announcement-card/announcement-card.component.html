@@ -1,0 +1,38 @@
+<p>announcement-card works!</p>
+<div *ngIf="announcement">
+  <ion-card color="success">
+    <ion-card-header>
+      <ion-card-title>Card Title</ion-card-title>
+      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      Card Content
+    </ion-card-content>
+  </ion-card>
+</div>
+<!-- <div *ngIf="announcement">
+  <ion-content>
+    <ion-card id="bannerwid" [style.backgroundColor]="announcement.background">
+      <ion-card-header id="banner-header-row">
+        <div id="banner-heading">
+          <ion-card-title id="banner-title">
+            {{ announcement.title }}
+          </ion-card-title>
+          <p>
+            {{ announcement.expirationDate.toLocaleDateString(undefined, {year: 'numeric', month: 'short', day: 'numeric'}) }}
+          </p>
+        </div>
+      </ion-card-header>
+      <ion-card-content id="banner-content">
+        <p id="banner-subtitle">
+          {{ announcement.type }}
+        </p>
+        <ion-card-subtitle
+          id="banner-description">
+          {{ announcement.description }}
+        </ion-card-subtitle>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+</div> -->

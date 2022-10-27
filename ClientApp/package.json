@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "^14.0.3",
     "@angular/platform-server": "^14.0.3",
     "@angular/router": "^14.0.3",
+    "@ionic/angular": "^6.3.3",
     "bootstrap": "^5.1.3",
     "jquery": "^3.6.0",
     "oidc-client": "^1.11.5",
@@ -45,7 +46,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.0.0",
-    "typescript": "~4.7.4"
+    "typescript": "~4.7.4",
+    "@ionic/angular-toolkit": "latest"
   },
   "overrides": {
     "autoprefixer": "10.4.5"
