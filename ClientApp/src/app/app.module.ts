@@ -13,6 +13,8 @@ import { AnnouncementCardComponent } from './announcement-card/announcement-card
 import { IonicModule } from '@ionic/angular';
 import { AnnouncementBannerComponent } from './announcement-banner/announcement-banner.component';
 import { SwiperModule } from 'swiper/angular';
+import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
+import { AnnouncementManagerComponent } from './announcement-manager/announcement-manager.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { SwiperModule } from 'swiper/angular';
     CounterComponent,
     FetchDataComponent,
     AnnouncementCardComponent,
-    AnnouncementBannerComponent
+    AnnouncementBannerComponent,
+    CreateAnnouncementComponent,
+    AnnouncementManagerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -32,6 +36,8 @@ import { SwiperModule } from 'swiper/angular';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'announcementManager', component: AnnouncementManagerComponent },
+      { path: 'create', component: CreateAnnouncementComponent },
     ]),
     IonicModule.forRoot(),
     SwiperModule,

@@ -11,8 +11,7 @@
         data-target=".navbar-collapse"
         aria-label="Toggle navigation"
         [attr.aria-expanded]="isExpanded"
-        (click)="toggle()"
-      >
+        (click)="toggle()">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div
@@ -27,7 +26,7 @@
           >
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <!-- <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/counter']"
               >Counter</a
             >
@@ -36,6 +35,12 @@
             <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
               >Fetch data</a
             >
+          </li> -->
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/announcementManager']">Manager Page</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/create']">Create Announcement</a>
           </li>
         </ul>
       </div>

@@ -12,8 +12,6 @@ export class AnnouncementCardComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.announcement)
-  }
+  ngOnInit(): void {  }
 
 }
