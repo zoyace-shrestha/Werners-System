@@ -1,5 +1,5 @@
 export interface Announcement {
-  id: number;
+  id     : number;
   title: string;
   description: string;
   type: string;
@@ -9,3 +9,16 @@ export interface Announcement {
   expirationDate: Date;
   isDraft: boolean;
 }
+
+
+// export interface Announcement {
+//   id?: number;
+//   title?: string;
+//   description?: string;
+//   type?: string;
+//   link?: string;
+//   background?: string;
+//   publishDate?: Date;
+//   expirationDate?: Date;
+//   isDraft?: boolean;
+// }

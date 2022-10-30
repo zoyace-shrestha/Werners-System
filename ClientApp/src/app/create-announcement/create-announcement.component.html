@@ -60,7 +60,7 @@
                 <ion-item>
                   <ion-label position="stacked">Type</ion-label>
                   <ion-select placeholder="News" [(ngModel)]="announcement.type" [multiple]="false">
-                    <ion-select-option value="Werner News">News</ion-select-option>
+                    <ion-select-option selected value="Werner News">News</ion-select-option>
                     <ion-select-option value="Rewards">Rewards<ion-label></ion-label></ion-select-option>
                     <ion-select-option value="COVID-19">COVID-19</ion-select-option>
                     <ion-select-option value="IMPORTANT!">IMPORTANT!</ion-select-option>
@@ -73,14 +73,14 @@
               <ion-list>
                 <ion-item>
                   <ion-label position="stacked">Background</ion-label>
-                  <ion-select class="my-select" [(ngModel)]="announcement.background" placeholder="White" [multiple]="false">
-                    <ion-select-option selected value="White" class="my-select-option">White
-                      <ion-label class="whitebox"></ion-label>
-                    </ion-select-option>
-                    <ion-select-option value="primary">Primary</ion-select-option>
-                    <!-- <ion-select-option value="green">Green</ion-select-option> -->
-                    <ion-select-option value="danger">Danger</ion-select-option>
+                  <ion-select placeholder="White" [(ngModel)]="announcement.background" [multiple]="false">
+                    <ion-select-option value="">White</ion-select-option>
+                    <ion-select-option value="primary">Primary<ion-label></ion-label></ion-select-option>
+                    <ion-select-option value="secondary">Secondary</ion-select-option>
+                    <ion-select-option value="tertiary">Tertiary</ion-select-option>
+                    <ion-select-option value="success">Success</ion-select-option>
                     <ion-select-option value="warning">Warning</ion-select-option>
+                    <ion-select-option value="danger">Danger</ion-select-option>
                   </ion-select>
                 </ion-item>
               </ion-list>
@@ -89,7 +89,7 @@
 
           <ion-row id="news-box">
             <!-- <ion-card id="news-card"> </ion-card> -->
-            <app-announcement-card style="width: 100%" [announcement]="announcement"></app-announcement-card>
+            <app-announcement-card style="width: 360px;" [announcement]="announcement"></app-announcement-card>
           </ion-row>
           <ion-row>
             <ion-col>
