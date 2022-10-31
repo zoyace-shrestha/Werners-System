@@ -3,7 +3,7 @@
 }
 
 #announcement-card{
-  width: min(100% - 15px, 840px);
+  width: min(100% - 15px, 840px) !important;
   border-radius: 0px;
   height: 155px;
   margin: auto;

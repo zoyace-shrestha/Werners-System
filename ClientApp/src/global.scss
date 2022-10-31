@@ -32,6 +32,17 @@
 @import "swiper/scss/keyboard";
 @import "swiper/css/pagination";
 
+:root {
+  --ion-color-primary: #3369B4;
+  --ion-color-secondary: #1877F2;
+  --ion-color-tertiary: #163762;
+  --ion-color-success: #218719;
+  --ion-color-warning: #F6A800;
+  // --ion-color-warning-contrast: #ffffff;
+  --ion-color-danger: #C03131;
+  --ion-color-light: #ffffff;
+}
+
 .swiper-pagination-bullet  {
   background-color: rgba($color: #000000, $alpha: 0.15) !important
 }
