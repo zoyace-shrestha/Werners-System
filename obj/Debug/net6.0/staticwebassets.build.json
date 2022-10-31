@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "JtiXP8QGhlNEgPY4oF1ZZ5KKCte2ArXV47CM/VGPwko=",
+  "Source": "mobile-app-messaging-module",
+  "BasePath": "_content/mobile-app-messaging-module",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "mobile-app-messaging-module\\wwwroot",
+      "Source": "mobile-app-messaging-module",
+      "ContentRoot": "C:\\Users\\andre\\Documents\\School\\SeniorDesign\\mobile-app-messaging-module\\wwwroot\\",
+      "BasePath": "_content/mobile-app-messaging-module",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\andre\\Documents\\School\\SeniorDesign\\mobile-app-messaging-module\\wwwroot\\favicon.ico",
+      "SourceId": "mobile-app-messaging-module",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\andre\\Documents\\School\\SeniorDesign\\mobile-app-messaging-module\\wwwroot\\",
+      "BasePath": "_content/mobile-app-messaging-module",
+      "RelativePath": "favicon.ico",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\favicon.ico"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+#heading-container{
+  padding-bottom: 5px;
+}
+
+#announcement-card{
+  width: min(100% - 15px, 840px) !important;
+  border-radius: 0px;
+  height: 155px;
+  margin: auto;
+  text-align: left;
+}
+
+#announcement-heading {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  height: 28px;
+}
+
+#announcement-type {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#announcement-title {
+  margin-top: 0px;
+}
+
+#announcement-description {
+  font-size: 12px;
+}
+
+#announcement-date{
+  font-size: 12px;
+}
