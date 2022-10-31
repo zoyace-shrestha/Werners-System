@@ -1,0 +1,148 @@
+.main-header {
+  font-family: 'Roboto';
+  font-style: bold;
+  font-size: 20px;
+  line-height: 23px;
+}
+.werner-gray {
+  color: #737373;
+}
+.header-row {
+  background-color: #ffffff;
+  margin-bottom: 5px;
+  border-radius: 0px 10px 0px 0px;
+}
+.header-label {
+  padding: 15px 10px 10px 30px;
+}
+.create-button-col {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.subheader-row {
+  background-color: #ffffff; 
+  padding: 15px 0px;
+}
+.create-new-btn {
+  max-width: 150px;
+  height: 35px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-size: 14px;
+  --background: #3369b4;
+  --color: #ffffff;
+}
+.subheader-label{
+  font-family: 'Roboto';
+  font-style: normal;
+  color: #000000;
+  margin-left: 15px;
+  font-size: 14px;
+}
+
+.main-content {
+  /* margin-top: 50px;  */
+  /* padding: 5px; */
+}
+.bottom-row {
+  background-color: #ffffff; 
+  border-radius: 1px 1px 15px 15px;
+}
+.bannerrow {
+  height: 60px;
+}
+.with-bottom-border {
+  border-bottom: thin solid rgba(0, 0, 0, 0.1);
+}
+.bannercol-third {
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-end;
+  height:100%;
+}
+
+.bannercol-first {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height:100%;
+}
+.banner-title-col {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-size: 14px;
+  height:100%;
+}
+.dateid {
+  border-radius: 30px;
+  padding: 4px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.my-dragable {
+  --ionicon-stroke-width: 40px;
+}
+ion-reorder {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: x-large;
+  margin-bottom: 8px;
+}
+
+.grid-wrapper-row {
+  background-color: #ffffff;
+  margin-bottom: 5px;
+  border-radius: 0px 0px 15px 15px;
+}
+
+.banner-title-label {
+  padding: 20px;
+}
+
+.col3-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.col3-row ion-note {
+  margin-top: 10px;
+}
+ion-modal#example-modal {
+  --width: fit-content;
+  --min-width: 250px;
+  --height: fit-content;
+  --border-radius: 6px;
+  --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+}
+
+ion-modal#example-modal h1 {
+  margin: 20px 20px 10px 20px;
+}
+
+ion-modal#example-modal ion-icon {
+  margin-right: 6px;
+
+  width: 48px;
+  height: 48px;
+
+  padding: 4px 0;
+
+  color: #aaaaaa;
+}
+
+ion-modal#example-modal .wrapper {
+  margin-bottom: 10px;
+}

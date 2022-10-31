@@ -1,0 +1,8 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:44419",
+"LaunchCommand": "npm start",
+"WorkingDirectory": "C:\\Users\\andre\\Documents\\School\\SeniorDesign\\mobile-app-messaging-module\\ClientApp\\",
+"MaxTimeoutInSeconds": "120"
+}
+}
