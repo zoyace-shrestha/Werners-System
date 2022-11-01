@@ -18,12 +18,23 @@ public class Startup
     }
 
     public IConfiguration Configuration { get; }
+    readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddCors(options =>
+        {
+            options.AddPolicy(name: MyAllowSpecificOrigins,
+                              policy =>
+                              {
+                                  policy.WithOrigins("http://localhost:5288",
+                                                      "http://localhost:7258",
+                                                      "http://localhost:44419");
+                              });
+        });
+
         services.AddControllersWithViews();
 
-        //services.AddSingleton<IConfiguration>(Configuration);
         string _connectionString = Configuration.GetConnectionString("aruiz");
         services.AddDbContext<aruizContext>(
             options => options.UseMySql(
@@ -44,16 +55,9 @@ public class Startup
         app.UseStaticFiles();
 
         app.UseRouting();
-
-        //app.UseAuthorization();
-
-        //endpoints
-
+        app.useCors(MyAllowSpecificOrigins);
         app.UseEndpoints(endpoints => {
             endpoints.MapControllers();
-            //endpoints.MapControllerRoute(
-            //    name: "default",
-            //    pattern: "{controller}/{action=Index}/{id?}");
         });
 
     }
