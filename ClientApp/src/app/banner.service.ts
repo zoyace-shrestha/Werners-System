@@ -10,36 +10,48 @@ import { catchError, tap } from 'rxjs/operators';
 export class BannerService {
 
   constructor(private http: HttpClient) { }
-
-  getTestBanners(): Observable<Announcement[]>{
-     //let ret = Array<Announcement>()
-
-     //for(let i = 0; i < 10; i++) {
-     //  let temp: Announcement = {
-     //    id: 1,
-     //    title: "2022 June Associate Recognition Ceremony",
-     //    description: "Werner was pleased to recognize four professional drivers: David C, Robert L, Daniel P, and Raymond W. Werner was pleased to recognize four professional drivers: David C, Robw",
-     //    type: "Werner News",
-     //    link: "Link",
-     //    background: "primary",
-     //    publishDate: new Date(),
-     //    expirationDate: new Date(),
-     //    isDraft: false
-     //  }
-     //  ret.push(temp)
-     //}
-     //return of(ret);
-    //let httpHeader = {
-    //  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    //};
-
-    let url = "https://localhost:7258/announcement/getActive";
-    return this.http.get<Announcement[]>(url)
+  baseUrl = "https://localhost:7258/announcement";
+  
+  getAnnouncementById(id: Number):Observable<Announcement> {
+    let path = "/" + id;
+    console.log('call initiated ' + path)
+    return this.http.get<Announcement>(this.baseUrl + path)
       .pipe(
-        tap(Announcement => console.log('Announcements fetched!')),
-        catchError(this.handleError<Announcement[]>('Get announcement', []))
+        tap(Announcement => console.log(path + ' call successful.', Announcement)),
+        catchError(this.handleError<Announcement>(path  + ' call unsuccessful'))
+    );  
+  }
+  getAll = ():Observable<Announcement[]> => this.makeGetListCall('/getAll');
+
+  getActive  = ():Observable<Announcement[]> => this.makeGetListCall('/getActive');
+
+  deleteById(id: Number) {
+    let path = "/delete/" + id;
+    return this.http.delete<{}>(this.baseUrl + path)
+    .pipe(
+      tap(Object => console.log(path + ' call successful.', Object)),
+      catchError(this.handleError<{}>(path  + ' call unsuccessful'))
+    );  
+  }
+
+  create = (announcement: Announcement):Observable<Announcement> => this.makePostCall('/create', announcement);
+  update = (announcement: Announcement):Observable<Announcement> => this.makePostCall('/update', announcement);
+  generateTitles = ():Observable<Announcement[]> => this.makeGetListCall('/generateTitles');
+
+  private makeGetListCall(path: String){
+    return this.http.get<Announcement[]>(this.baseUrl + path)
+      .pipe(
+        tap(list => console.log(path + ' call successful.', list)),
+        catchError(this.handleError<Announcement[]>(path  + ' call unsuccessful', []))
     );
-    // return this.http.get<Announcement[]>(url, null);
+  }
+
+  private makePostCall(path: String, body: Announcement){
+    return this.http.post<Announcement>(this.baseUrl + path, body)
+    .pipe(
+      tap(Announcement => console.log(path + ' call successful.', Announcement)),
+      catchError(this.handleError<Announcement>(path  + ' call unsuccessful'))
+  );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

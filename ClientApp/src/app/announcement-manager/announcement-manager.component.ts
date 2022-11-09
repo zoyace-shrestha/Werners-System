@@ -17,7 +17,7 @@ export class AnnouncementManagerComponent implements OnInit {
   constructor(private bannerService: BannerService) {}
 
   ngOnInit() {
-    this.bannerService.getTestBanners().subscribe(banners => this.announcements = banners);
+    this.bannerService.getActive().subscribe(banners => this.announcements = banners);
   }
 
 }

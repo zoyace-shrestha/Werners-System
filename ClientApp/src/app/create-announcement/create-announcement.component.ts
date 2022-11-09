@@ -9,7 +9,7 @@ import { Announcement } from '../announcement';
 export class CreateAnnouncementComponent implements OnInit {
 
   announcement: Announcement = {
-    id: 1,
+    idAnnoucements: 1,
     title: "",
     description: "",
     type: "",
