@@ -14,8 +14,7 @@ export class BannerService {
   
   getAnnouncementById(id: Number):Observable<Announcement> {
     let path = "/" + id;
-    console.log('call initiated ' + path)
-    return this.http.get<Announcement>(this.baseUrl + path)
+      return this.http.get<Announcement>(this.baseUrl + path)
       .pipe(
         tap(Announcement => console.log(path + ' call successful.', Announcement)),
         catchError(this.handleError<Announcement>(path  + ' call unsuccessful'))

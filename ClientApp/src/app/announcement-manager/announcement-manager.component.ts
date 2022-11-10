@@ -1,7 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonReorderGroup } from '@ionic/angular';
-import { ItemReorderEventDetail } from '@ionic/core';
-
+import { Component, OnInit } from '@angular/core';
 import { Announcement } from '../announcement';
 import { BannerService } from '../banner.service';
 
