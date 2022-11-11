@@ -33,10 +33,10 @@
                 <ion-note [style.backgroundColor]="banner.background" class="dateid">
                   Exp. {{ banner.expirationDate.toLocaleDateString() }}
                 </ion-note>
-                <ion-button fill="clear" id="{{ 'delete' + banner.id }}" expand="block">
+                <ion-button fill="clear" id="{{ 'delete' + banner.idAnnoucements }}" expand="block">
                   <ion-icon name="trash-outline" class="werner-gray"></ion-icon>
                 </ion-button>
-                <ion-modal id="example-modal" #modal trigger="{{ 'delete' + banner.id }}">
+                <ion-modal id="example-modal" #modal trigger="{{ 'delete' + banner.idAnnoucements }}">
                   <ng-template>
                     <div class="wrapper">
                       <h1>Are You Sure?</h1>
@@ -51,10 +51,10 @@
                     </div>
                   </ng-template>
                 </ion-modal>
-                <ion-button fill="clear" id="{{ 'pencil' + banner.id }}" expand="block">
+                <ion-button fill="clear" id="{{ 'pencil' + banner.idAnnoucements }}" expand="block">
                   <ion-icon name="pencil-outline" class="werner-gray"></ion-icon>
                 </ion-button>
-                <ion-modal id="example-modal" #modal trigger="{{ 'pencil' + banner.id }}">
+                <ion-modal id="example-modal" #modal trigger="{{ 'pencil' + banner.idAnnoucements }}">
                   <ng-template>
                     <div class="wrapper">
                       <h1>Dialog header</h1>

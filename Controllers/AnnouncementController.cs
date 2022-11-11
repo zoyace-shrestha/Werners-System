@@ -11,7 +11,6 @@ namespace mobile_app_messaging_module.Controllers
 
     [Route("[controller]")]
     [ApiController]
-
     public class AnnouncementController : ControllerBase
     {
         private readonly aruizContext _context;
@@ -71,7 +70,7 @@ namespace mobile_app_messaging_module.Controllers
          * Test Endpoint used to generate test announcements
          * Remove when complete
          */
-        [HttpPost("generateTitles")]
+        [HttpGet("generateTitles")]
         public JsonResult generateTitles()
         {
             var list = new List<Annoucement>();
