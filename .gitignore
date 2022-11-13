@@ -1,5 +1,6 @@
-bin/Debug/net6.0/*
-obj/*
+bin/Debug/net6.0/
+obj/
 ClientApp/.angular
+wwwroot/
 
 bin/Debug/net6.0/mobile-app-messaging-module.dll

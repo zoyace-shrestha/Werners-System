@@ -13,6 +13,12 @@ export class AnnouncementManagerComponent implements OnInit {
 
   constructor(private bannerService: BannerService) {}
 
+  dateFormat(dateString: string) {
+    let date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = {weekday: undefined, year: 'numeric', month: 'short', day: 'numeric' };
+    return date.toLocaleDateString(undefined, options);
+  } 
+
   ngOnInit() {
     this.bannerService.getActive().subscribe(banners => this.announcements = banners);
   }

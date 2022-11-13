@@ -22,6 +22,12 @@ export class CreateAnnouncementComponent implements OnInit {
   
   constructor() { }
 
+  dateFormat(dateString: string) {
+    let date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = {weekday: undefined, year: 'numeric', month: 'short', day: 'numeric' };
+    return date.toLocaleDateString(undefined, options);
+  }
+
   ngOnInit(): void {
   }
 

@@ -11,6 +11,8 @@ export class HomeComponent {
   constructor(private bannerService: BannerService) { }
   testVal = 1;
 
+  tomorrow  = new Date();
+
   ann: Announcement = {
     idAnnoucements: 0,
     type: 'Werner Life',
@@ -19,10 +21,10 @@ export class HomeComponent {
     background: 'secondary',
     link: '',
     publishDate: new Date(),
-    expirationDate: new Date(),
+    expirationDate: this.tomorrow,
     isDraft: false
   }
-
+  
   getAnnouncementById = () => this.bannerService.getAnnouncementById(this.testVal).subscribe();
   getAll = () => this.bannerService.getAll().subscribe();
   getActive = () => this.bannerService.getActive().subscribe();
@@ -37,6 +39,7 @@ export class HomeComponent {
   } 
   delete = () => this.bannerService.deleteById(this.testVal).subscribe();
   ngOnInit(): void {
+    this.tomorrow.setDate(this.tomorrow.getDate() + 1);
   }
 
 }
