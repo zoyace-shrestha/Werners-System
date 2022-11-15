@@ -20,7 +20,19 @@ export class AnnouncementManagerComponent implements OnInit {
   } 
 
   ngOnInit() {
-    this.bannerService.getActive().subscribe(banners => this.announcements = banners);
-  }
+    // Retrieve active banners
+    this.bannerService.getActive().subscribe(banners => {
+      this.announcements = banners;
+      hideloader();
+    });
 
+    // Hide loading component
+    function hideloader() {
+      const loadingComponent = document.getElementById('loading');
+      console.log("hiding")
+      console.log(loadingComponent);
+      if (!loadingComponent) return;
+      loadingComponent.style.display = 'none'
+    }
+  }
 }

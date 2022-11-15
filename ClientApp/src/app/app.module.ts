@@ -15,6 +15,7 @@ import { AnnouncementBannerComponent } from './announcement-banner/announcement-
 import { SwiperModule } from 'swiper/angular';
 import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
 import { AnnouncementManagerComponent } from './announcement-manager/announcement-manager.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AnnouncementManagerComponent } from './announcement-manager/announcemen
     AnnouncementCardComponent,
     AnnouncementBannerComponent,
     CreateAnnouncementComponent,
-    AnnouncementManagerComponent
+    AnnouncementManagerComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

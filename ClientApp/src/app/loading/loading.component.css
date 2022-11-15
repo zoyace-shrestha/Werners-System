@@ -1,0 +1,5 @@
+.with-bottom-border {
+  border-bottom: thin solid rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  margin: 0px 50px;
+}
