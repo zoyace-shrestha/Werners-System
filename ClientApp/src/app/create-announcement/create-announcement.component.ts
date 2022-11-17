@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Announcement } from '../announcement';
+import { AnnouncementCardComponent } from '../announcement-card/announcement-card.component';
 
 @Component({
   selector: 'app-create-announcement',
@@ -8,25 +9,20 @@ import { Announcement } from '../announcement';
 })
 export class CreateAnnouncementComponent implements OnInit {
 
-  announcement: Announcement = {
-    idAnnoucements: 1,
-    title: "",
-    description: "",
-    type: "",
-    link: "",
-    background: "",
-    publishDate: new Date(),
-    expirationDate: new Date(),
-    isDraft: false
-  }
-  
-  constructor() { }
 
-  dateFormat(dateString: string) {
-    let date = new Date(dateString);
-    const options: Intl.DateTimeFormatOptions = {weekday: undefined, year: 'numeric', month: 'short', day: 'numeric' };
-    return date.toLocaleDateString(undefined, options);
+  announcement: Announcement = {
+      idAnnoucements: 0,
+      title: "",
+      description: "",
+      type: "",
+      link: "",
+      background: "",
+      publishDate: new Date(),
+      expirationDate: new Date(),
+      isDraft: false
   }
+
+  constructor() { }
 
   ngOnInit(): void {
   }

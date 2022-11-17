@@ -16,6 +16,8 @@ import { SwiperModule } from 'swiper/angular';
 import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
 import { AnnouncementManagerComponent } from './announcement-manager/announcement-manager.component';
 import { LoadingComponent } from './loading/loading.component';
+import { AnnouncementFormComponent } from './announcement-form/announcement-form.component';
+import { UpdateAnnouncementComponent } from './update-announcement/update-announcement.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { LoadingComponent } from './loading/loading.component';
     AnnouncementBannerComponent,
     CreateAnnouncementComponent,
     AnnouncementManagerComponent,
-    LoadingComponent
+    LoadingComponent,
+    AnnouncementFormComponent,
+    UpdateAnnouncementComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -40,6 +44,7 @@ import { LoadingComponent } from './loading/loading.component';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'announcementManager', component: AnnouncementManagerComponent },
       { path: 'create', component: CreateAnnouncementComponent },
+      { path: 'update/:id', component: UpdateAnnouncementComponent },
     ]),
     IonicModule.forRoot(),
     SwiperModule,
