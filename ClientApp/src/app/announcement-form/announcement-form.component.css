@@ -44,3 +44,7 @@
     --background: #ffffff;
     --color: #163762;
   }
+
+  .form-card {
+    width: 360px;
+  }

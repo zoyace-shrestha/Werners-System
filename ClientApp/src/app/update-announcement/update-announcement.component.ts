@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Announcement } from '../announcement';
+import { Announcement, blankAnnouncement } from '../announcement';
 import { BannerService } from '../banner.service';
 
 @Component({
@@ -10,17 +10,7 @@ import { BannerService } from '../banner.service';
 })
 export class UpdateAnnouncementComponent implements OnInit {
 
-  announcement: Announcement = {
-    idAnnoucements: 0,
-    title: "",
-    description: "",
-    type: "",
-    link: "",
-    background: "",
-    publishDate: new Date(),
-    expirationDate: new Date(),
-    isDraft: false
-  }
+  announcement: Announcement = blankAnnouncement(0);
 
   id: number = 0;
 

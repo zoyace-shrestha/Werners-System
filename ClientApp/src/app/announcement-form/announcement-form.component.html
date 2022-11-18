@@ -86,14 +86,13 @@
           </ion-row>
 
           <ion-row id="news-box">
-            <!-- <ion-card id="news-card"> </ion-card> -->
-            <app-announcement-card style="width: 360px;" [announcement]="announcement"></app-announcement-card>
+            <app-announcement-card class="form-card" [announcement]="announcement"></app-announcement-card>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-button id="primary-btn">{{saveButtonTitle}}</ion-button>
-              <ion-button id="secondary-btn">{{saveDraftButtonTitle}}</ion-button>
-              <ion-button id="secondary-btn">RESET</ion-button>
+              <ion-button id="primary-btn" (click)="save()">{{saveButtonTitle}}</ion-button>
+              <ion-button id="secondary-btn"  (click)="saveDraft()">{{saveDraftButtonTitle}}</ion-button>
+              <ion-button id="secondary-btn" (click)="reset()">RESET</ion-button>
             </ion-col>
           </ion-row>
         </ion-col>

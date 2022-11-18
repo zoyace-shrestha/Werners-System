@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Announcement } from '../announcement';
+import { Announcement, blankAnnouncement } from '../announcement';
 import { AnnouncementCardComponent } from '../announcement-card/announcement-card.component';
 
 @Component({
@@ -9,18 +9,7 @@ import { AnnouncementCardComponent } from '../announcement-card/announcement-car
 })
 export class CreateAnnouncementComponent implements OnInit {
 
-
-  announcement: Announcement = {
-      idAnnoucements: 0,
-      title: "",
-      description: "",
-      type: "",
-      link: "",
-      background: "",
-      publishDate: new Date(),
-      expirationDate: new Date(),
-      isDraft: false
-  }
+  announcement: Announcement = blankAnnouncement(0);
 
   constructor() { }
 

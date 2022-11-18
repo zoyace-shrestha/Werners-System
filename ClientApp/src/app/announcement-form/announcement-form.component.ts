@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Announcement } from '../announcement';
+import { Announcement, blankAnnouncement } from '../announcement';
+import { BannerService } from '../banner.service';
+import { ToastController } from '@ionic/angular';
+import { toast } from '../toasthelper';
+
 
 @Component({
   selector: 'app-announcement-form',
@@ -13,8 +17,14 @@ export class AnnouncementFormComponent implements OnInit {
   @Input() title?: String;
   @Input() saveButtonTitle?: String;
   @Input() saveDraftButtonTitle?: String;
+  @Input() isUpdate?: Boolean;
 
-  constructor() { }
+  resultToast = {
+    next: () => toast('success', 'Save successful', this.toastController), 
+    error: () => toast('failure','Save failed', this.toastController)
+  }
+
+  constructor(private bannerService: BannerService, private toastController: ToastController) { }
 
   dateFormat(dateString: string) {
     let date = new Date(dateString);
@@ -25,4 +35,25 @@ export class AnnouncementFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  saveDraft(){
+    this.announcement.isDraft = true;
+    if (!this.isUpdate){
+      this.bannerService.create(this.announcement).subscribe(this.resultToast);
+    } else {
+      this.bannerService.update(this.announcement).subscribe(this.resultToast);
+    }
+  }
+
+  save(){
+    this.announcement.isDraft = false;
+    if (!this.isUpdate){
+      this.bannerService.create(this.announcement).subscribe(this.resultToast);
+    } else {
+      this.bannerService.update(this.announcement).subscribe(this.resultToast);
+    }
+  }
+
+  reset(){
+    this.announcement =  blankAnnouncement(this.announcement.idAnnoucements);
+  }
 }
