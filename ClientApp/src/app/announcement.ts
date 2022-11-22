@@ -18,8 +18,8 @@ export function blankAnnouncement(id: number): Announcement{
       type: "",
       link: "",
       background: "",
-      publishDate: new Date(),
-      expirationDate: new Date(),
+      publishDate: new Date(0),
+      expirationDate: new Date(0),
       isDraft: false
   }
 } 

@@ -1,50 +1,65 @@
 #card-header {
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  }
-  
-  #dropdown {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  #whitebox {
-    --background: #00213f;
-    --color: #00ff8c;
-  }
-  
-  .my-select .my-select-option .whitebox {
-    --color: #971e49;
-    --color-hover: #79193b;
-    --background-color: red;
-  }
-  
-  #news-box {
-    background-color: #d9d9d9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 221px;
-  }
-  
-  #news-card {
-    flex-shrink: 0;
-    align-content: center;
-    background-color: #163762;
-    width: 407px;
-    height: 151px;
-  }
-  
-  #primary-btn {
-    --background: #3369b4;
-    --color: #ffffff;
-  }
-  
-  #secondary-btn {
-    --background: #ffffff;
-    --color: #163762;
-  }
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
 
-  .form-card {
-    width: 360px;
-  }
+#dropdown {
+  display: flex;
+  flex-direction: row;
+}
+
+#whitebox {
+  --background: #00213f;
+  --color: #00ff8c;
+}
+
+.my-select .my-select-option .whitebox {
+  --color: #971e49;
+  --color-hover: #79193b;
+  --background-color: red;
+}
+
+#news-box {
+  background-color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 221px;
+}
+
+#news-card {
+  flex-shrink: 0;
+  align-content: center;
+  background-color: #163762;
+  width: 407px;
+  height: 151px;
+}
+
+#primary-btn {
+  --background: #3369b4;
+  --color: #ffffff;
+}
+
+#secondary-btn {
+  --background: #ffffff;
+  --color: #163762;
+}
+
+.form-card {
+  width: 360px;
+}
+
+.date-input {
+  cursor: pointer !important;
+}
+
+::ng-deep .date-modal {
+  --height: 440px;
+  --width: 320px;
+  --border-radius: 8px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+::ng-deep .date-input .native-input {
+  cursor: pointer;
+}

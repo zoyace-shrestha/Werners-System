@@ -23,31 +23,46 @@
 
           <ion-row>
             <ion-col>
-              <ion-item>
-                <ion-label position="stacked"> Publish Date</ion-label>
-                <ion-input placeholder="mm/dd/yy">
-                   <!-- <ion-datetime-button></ion-datetime-button>  -->
+              <ion-item id="publishDate">
+                <ion-label position="stacked">Publish Date</ion-label>
+                <ion-input
+                  class="date-input"
+                  value="{{publishDateLabel}}"
+                  placeholder="mm/dd/yyyy">
                 </ion-input>
-                <!-- <ion-button id="open-date">Date</ion-button> -->
-                <!-- <ion-datetime-button 
-                value="2022-04-21T00:00:00"
-                min="2022-03-01T00:00:00"
-                max="2022-05-31T23:59:59"
-                datetime="datetime"></ion-datetime-button> -->
-                <ion-modal trigger="open-date" [keepContentsMounted]="true">
+                <ion-modal class="date-modal" trigger="publishDate">
                   <ng-template>
-                    <ion-datetime id="datetime"></ion-datetime>
-                    <ion-button >here</ion-button>
+                    <ion-datetime
+                      #publishDateTime
+                      size="cover"
+                      showDefaultButtons="true"
+                      [(ngModel)]="publishDate"
+                      (ionChange)="publishDateChanged(publishDateTime.value)">
+                    </ion-datetime>
                   </ng-template>
                 </ion-modal>
               </ion-item>
             </ion-col>
+
             <ion-col>
-              <ion-item>
-                <ion-label
-                  position="stacked"
-                  onclick="<ion-datetime></ion-datetime>">Expiration Date</ion-label>
-                <ion-input placeholder="mm/dd/yy"></ion-input>
+              <ion-item id="expirationDate">
+                <ion-label position="stacked">Expiration Date</ion-label>
+                <ion-input
+                  class="date-input"
+                  value="{{expirationDateLabel}}"
+                  placeholder="mm/dd/yyyy">
+                </ion-input>
+                <ion-modal class="date-modal"trigger="expirationDate">
+                  <ng-template>
+                    <ion-datetime
+                      #expirationDateTime
+                      size="cover"
+                      showDefaultButtons="true"
+                      [(ngModel)]="expirationDate"
+                      (ionChange)="expirationDateChanged(expirationDateTime.value)"
+                    ></ion-datetime>
+                  </ng-template>
+                </ion-modal>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -67,7 +82,7 @@
                 </ion-item>
               </ion-list>
             </ion-col>
-            <ion-col size="6">
+            <ion-col>
               <ion-list>
                 <ion-item>
                   <ion-label position="stacked">Background</ion-label>
