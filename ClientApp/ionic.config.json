@@ -1,0 +1,7 @@
+{
+  "name": "mobile-app-messaging-module",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

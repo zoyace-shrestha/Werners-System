@@ -5,6 +5,7 @@
 #announcement-card {
   width: min(100% - 15px, 840px) !important;
   border-radius: 0px;
+  position:relative !important;
   height: 155px;
   margin: auto;
   text-align: left;
@@ -28,8 +29,20 @@
 
 #announcement-description {
   font-size: 12px;
+  
 }
 
 #announcement-date {
   font-size: 12px;
+}
+
+
+#announcement-link
+
+ {
+  position: absolute !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  padding-bottom: 10px;
+  padding-right: 10px;
 }

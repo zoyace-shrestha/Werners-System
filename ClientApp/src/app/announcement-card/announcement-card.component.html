@@ -9,6 +9,13 @@
     </ion-card-header>
     <ion-card-content id="announcement-description">
       {{announcement.description}}
+      
+      
     </ion-card-content>
+    <div id="announcement-link" *ngIf="announcement.link">
+      <button ion-button style="background-color: transparent;" (click)="openWithSystemBrowser(announcement.link)">
+         <ion-icon   name="open-outline"></ion-icon>
+      </button>
+    </div>
   </ion-card>
 </div>

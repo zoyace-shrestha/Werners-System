@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@ionic-native/in-app-browser": "^5.36.0"
+  }
+}
