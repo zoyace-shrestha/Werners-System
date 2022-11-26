@@ -1,8 +1,8 @@
-#heading-container{
+#heading-container {
   padding-bottom: 5px;
 }
 
-#announcement-card{
+#announcement-card {
   width: min(100% - 15px, 840px) !important;
   border-radius: 0px;
   height: 155px;
@@ -30,6 +30,6 @@
   font-size: 12px;
 }
 
-#announcement-date{
+#announcement-date {
   font-size: 12px;
 }

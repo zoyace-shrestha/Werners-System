@@ -4,28 +4,34 @@
   font-size: 20px;
   line-height: 23px;
 }
+
 .werner-gray {
   color: #737373;
 }
+
 .header-row {
   background-color: #ffffff;
   margin-bottom: 5px;
   border-radius: 0px 10px 0px 0px;
 }
+
 .header-label {
   padding: 15px 10px 10px 30px;
 }
+
 .create-button-col {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-content: center;
 }
+
 .subheader-row {
-  background-color: #ffffff; 
+  background-color: #ffffff;
   padding: 15px 0px;
 }
-.create-new-btn {
+
+.blue-btn {
   max-width: 150px;
   height: 35px;
   font-family: 'Roboto';
@@ -34,7 +40,9 @@
   --background: #3369b4;
   --color: #ffffff;
 }
-.subheader-label{
+
+
+.subheader-label {
   font-family: 'Roboto';
   font-style: normal;
   color: #000000;
@@ -46,29 +54,34 @@
   /* margin-top: 50px;  */
   padding: 5px;
 }
+
 .bottom-row {
-  background-color: #ffffff; 
+  background-color: #ffffff;
   border-radius: 1px 1px 15px 15px;
 }
+
 .bannerrow {
   height: 60px;
 }
+
 .with-bottom-border {
   border-bottom: thin solid rgba(0, 0, 0, 0.1);
 }
+
 .bannercol-third {
   display: flex;
   justify-content: flex-end;
   align-content: flex-end;
-  height:100%;
+  height: 100%;
 }
 
 .bannercol-first {
   display: flex;
   justify-content: center;
   align-content: center;
-  height:100%;
+  height: 100%;
 }
+
 .banner-title-col {
   display: flex;
   justify-content: flex-start;
@@ -76,8 +89,9 @@
   font-family: 'Roboto';
   font-style: normal;
   font-size: 14px;
-  height:100%;
+  height: 100%;
 }
+
 .dateid {
   border-radius: 30px;
   padding: 4px 10px;
@@ -90,6 +104,7 @@
 .my-dragable {
   --ionicon-stroke-width: 40px;
 }
+
 ion-reorder {
   color: black;
   display: flex;
@@ -110,7 +125,7 @@ ion-reorder {
   padding: 20px;
 }
 
-.col3-row{
+.col3-row {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -120,6 +135,7 @@ ion-reorder {
 .col3-row ion-note {
   margin-top: 10px;
 }
+
 ion-modal#example-modal {
   --width: fit-content;
   --min-width: 250px;
@@ -145,4 +161,21 @@ ion-modal#example-modal ion-icon {
 
 ion-modal#example-modal .wrapper {
   margin-bottom: 10px;
+}
+
+#announcement-card {
+  width: 400px;
+  margin: 0px 10px;
+
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0px 10px;
+}
+
+.example-modal {
+  --width: 400px !important;
+  height: auto !important;
 }

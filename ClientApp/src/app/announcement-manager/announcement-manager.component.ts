@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { result } from 'lodash';
 import { Announcement } from '../announcement';
 import { BannerService } from '../banner.service';
 
@@ -11,13 +12,21 @@ export class AnnouncementManagerComponent implements OnInit {
 
   announcements: Array<Announcement> = [];
 
-  constructor(private bannerService: BannerService) {}
+  constructor(private bannerService: BannerService) { }
 
   dateFormat(dateString: string) {
     let date = new Date(dateString);
-    const options: Intl.DateTimeFormatOptions = {weekday: undefined, year: 'numeric', month: 'short', day: 'numeric' };
+    const options: Intl.DateTimeFormatOptions = { weekday: undefined, year: 'numeric', month: 'short', day: 'numeric' };
     return date.toLocaleDateString(undefined, options);
-  } 
+  }
+
+  onDelete(banner: Announcement) {
+    this.bannerService.deleteById(banner.idAnnoucements).subscribe(result => { }, error => console.log(error));
+    const index = this.announcements.indexOf(banner);
+    if (index > -1) {
+      this.announcements.splice(index, 1);
+    }
+  }
 
   ngOnInit() {
     // Retrieve active banners
@@ -35,4 +44,5 @@ export class AnnouncementManagerComponent implements OnInit {
       loadingComponent.style.display = 'none'
     }
   }
+
 }
