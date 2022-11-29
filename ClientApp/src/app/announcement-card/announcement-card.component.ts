@@ -31,8 +31,13 @@ export class AnnouncementCardComponent implements OnInit {
 
   constructor() { }
   public openWithSystemBrowser(url : string){
-    const target = "_system";
-    this.theInAppBrowser.create(url,target,this.options);
+    const matches = url.match(/https:\//);
+
+    if (matches) {
+      const target = "_system";
+      this.theInAppBrowser.create(url,target,this.options);
+    }
+    
   }
 
   ngOnInit(): void {  }

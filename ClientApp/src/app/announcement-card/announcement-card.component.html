@@ -1,4 +1,5 @@
 <div *ngIf="announcement">
+  <a [routerLink]="" (click)="openWithSystemBrowser(announcement.link)">
   <ion-card id="announcement-card" color="{{announcement.background}}">
     <ion-card-header id="heading-container">
       <div id="announcement-heading">
@@ -13,9 +14,8 @@
       
     </ion-card-content>
     <div id="announcement-link" *ngIf="announcement.link">
-      <button ion-button style="background-color: transparent;" (click)="openWithSystemBrowser(announcement.link)">
-         <ion-icon   name="open-outline"></ion-icon>
-      </button>
+         <ion-icon  name="open-outline"></ion-icon>
     </div>
   </ion-card>
+</a>
 </div>
