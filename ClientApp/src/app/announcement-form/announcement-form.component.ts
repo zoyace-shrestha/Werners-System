@@ -4,6 +4,7 @@ import { BannerService } from '../banner.service';
 import { ToastController } from '@ionic/angular';
 import { toast } from '../toasthelper';
 import {formatDate} from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-announcement-form',
@@ -26,8 +27,11 @@ export class AnnouncementFormComponent implements OnInit {
   expirationDateLabel: String = ""
 
   resultToast = {
-    next: () => toast('success', 'Save successful', this.toastController), 
-    error: () => toast('failure','Save failed', this.toastController)
+    next: () => {
+      this.router.navigate(['/announcementManager']);
+      toast('success', 'Save successful', this.toastController);
+    }, 
+    error: () => toast('danger','Save failed', this.toastController)
   }
 
   // Save announcement as draft announcement
@@ -95,7 +99,7 @@ export class AnnouncementFormComponent implements OnInit {
     }
   }
 
-  constructor(private bannerService: BannerService, private toastController: ToastController) { }
+  constructor(private bannerService: BannerService, private toastController: ToastController, private router: Router) { }
 
   // When input values are updated
   ngOnChanges(_ : OnChanges) {

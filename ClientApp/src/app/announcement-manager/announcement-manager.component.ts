@@ -28,6 +28,11 @@ export class AnnouncementManagerComponent implements OnInit {
     }
   }
 
+  updatePageLink(banner: Announcement){
+    let uri = '../update/'+banner.idAnnoucements;
+    return [uri];
+  }
+
   ngOnInit() {
     // Retrieve active banners
     this.bannerService.getActive().subscribe(banners => {

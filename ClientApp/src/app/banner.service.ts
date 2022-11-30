@@ -47,10 +47,7 @@ export class BannerService {
 
   private makePostCall(path: String, body: Announcement){
     return this.http.post<Announcement>(this.baseUrl + path, body)
-    .pipe(
-      tap(Announcement => console.log(path + ' call successful.', Announcement)),
-      catchError(this.handleError<Announcement>(path  + ' call unsuccessful'))
-  );
+      .pipe(tap(Announcement => console.log(path + ' call successful.', Announcement)));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
