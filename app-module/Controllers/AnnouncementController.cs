@@ -13,20 +13,22 @@ namespace mobile_app_messaging_module.Controllers
     [ApiController]
     public class AnnouncementController : ControllerBase
     {
+        // private readonly IAnnouncementManager AnnouncementManager;
+
         private readonly aruizContext _context;
         private readonly AnnouncementManager announcementManager;
 
-        public AnnouncementController(aruizContext context)
+        public AnnouncementController( aruizContext context )
         {
             _context = context;
             announcementManager = new AnnouncementManager(context);
         }
 
 
-        [HttpGet("{annoucementId}")]
-        public JsonResult GetOne(int annoucementId)
+        [HttpGet("{announcementId}")]
+        public JsonResult GetOne(int announcementId)
         {
-            return new JsonResult(announcementManager.GetOne(annoucementId));
+            return new JsonResult(announcementManager.GetOne(announcementId));
         }
 
 
@@ -48,11 +50,11 @@ namespace mobile_app_messaging_module.Controllers
         {
             var deleteCount = announcementManager.Delete(announcementId);
             // Return the number of rows deleted (hopefully just one...)
-            return new JsonResult( new { deleteCount = deleteCount });
+            return new JsonResult(new { deleteCount = deleteCount });
         }
 
         [HttpPost("create")]
-        public JsonResult Create([FromBody()] Annoucement announcement)
+        public JsonResult Create([FromBody()] Announcement announcement)
         {
             announcementManager.Create(announcement);
             return new JsonResult(announcement);
@@ -60,37 +62,10 @@ namespace mobile_app_messaging_module.Controllers
 
 
         [HttpPost("update")]
-        public JsonResult Update([FromBody()] Annoucement announcement)
+        public JsonResult Update([FromBody()] Announcement announcement)
         {
             announcementManager.Update(announcement);
             return new JsonResult(announcement);
-        }
-
-        /*
-         * Test Endpoint used to generate test announcements
-         * Remove when complete
-         */
-        [HttpGet("generateTitles")]
-        public JsonResult generateTitles()
-        {
-            var list = new List<Annoucement>();
-            var tomorrow = DateTime.Now;
-            tomorrow.AddDays(1);
-            var ann = new Annoucement()
-            {
-                title = "Title",
-                description = "Description",
-                type = "Type",
-                link = "Link",
-                background = "Background",
-                publishDate = DateTime.Now,
-                expirationDate = tomorrow,
-                isDraft = true,
-            };
-            list.Add(ann);
-            _context.AddRange(list);
-            _context.SaveChanges();
-            return new JsonResult(list);
         }
 
     }

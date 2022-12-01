@@ -5,20 +5,45 @@ using System.Linq;
 using System.Threading.Tasks;
 using mobile_app_messaging_module.DataModels;
 using System.Net;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 public class aruizContext : DbContext
 {
-    public aruizContext(DbContextOptions<aruizContext> options) : base(options) { }
+    private string _connectionString;
+    private string _table;
+    public aruizContext(String table)
+    {
+        _connectionString = "Server=cse.unl.edu; Port=3306; Database=aruiz; Uid=aruiz; Pwd=uHVUeBooNA8;";
+        _table = table;
+    }
+    public aruizContext(DbContextOptions<aruizContext> options) : base(options)
+    {
+        //var builder = new ConfigurationBuilder();
+        //builder.AddJsonFile("appsettings.json", optional: false);
 
-    public DbSet<Annoucement> Announcements { get; set; }
+        //var configuration = builder.Build();
+
+        _table = "Announcements";
+        _connectionString = "Server=cse.unl.edu; Port=3306; Database=aruiz; Uid=aruiz; Pwd=uHVUeBooNA8;";
+    }
+    public DbSet<Announcement> Announcements { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder
+                .UseMySql(_connectionString, ServerVersion.AutoDetect(_connectionString)).EnableSensitiveDataLogging();
+        }
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Annoucement>(entity =>
+        modelBuilder.Entity<Announcement>(entity =>
         {
-            entity.ToTable("Announcements");
+            entity.ToTable(_table);
 
-            entity.Property(e => e.idAnnoucements)
+            entity.Property(e => e.idAnnouncements)
                 .IsRequired()
                 .HasColumnName("idAnnouncements")
                 .HasColumnType("int(11)");

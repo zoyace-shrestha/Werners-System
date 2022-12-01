@@ -56,7 +56,7 @@ export class AnnouncementFormComponent implements OnInit {
 
   // Reset announcement to blank announcement
   reset(){
-    this.announcement =  blankAnnouncement(this.announcement.idAnnoucements);
+    this.announcement = blankAnnouncement(this.announcement.idAnnouncements);
     this.publishDate = this.announcement?.publishDate.toISOString();
     this.expirationDate = this.announcement?.expirationDate.toISOString();
     this.publishDateLabel = "";
@@ -83,7 +83,7 @@ export class AnnouncementFormComponent implements OnInit {
     }
 
     // If the announcment input is not populated, do not update the date properties
-    if (this.announcement.idAnnoucements === 0) {
+    if (this.announcement.idAnnouncements === 0) {
       return;
     }
 

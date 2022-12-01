@@ -2,10 +2,10 @@
 
 namespace mobile_app_messaging_module.DataModels
 {
-    public class Annoucement
+    public class Announcement
     {
         [Key]
-        public int idAnnoucements { get; set; }
+        public int idAnnouncements { get; set; }
         public string? title { get; set; }
         public string? description { get; set; }
         public string? type { get; set; }

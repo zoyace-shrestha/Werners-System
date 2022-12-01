@@ -34,11 +34,11 @@
               <ion-note [style.backgroundColor]="banner.background" class="dateid">
                 Exp. {{ dateFormat(banner.expirationDate.toString()) }}
               </ion-note>
-              <ion-button fill="clear" id="{{ 'delete' + banner.idAnnoucements }}" expand="block">
+              <ion-button fill="clear" id="{{ 'delete' + banner.idAnnouncements }}" expand="block">
                 <ion-icon name="trash-outline" class="werner-gray"></ion-icon>
               </ion-button>
               <ion-modal id="example-modal" class="example-modal" #modal
-                trigger="{{ 'delete' + banner.idAnnoucements }}">
+                trigger="{{ 'delete' + banner.idAnnouncements }}">
                 <ng-template>
                   <div class="wrapper">
                     <app-announcement-card [announcement]="banner" id="announcement-card"></app-announcement-card>

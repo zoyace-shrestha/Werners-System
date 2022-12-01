@@ -2,7 +2,7 @@
 
 namespace mobile_app_messaging_module.Managers
 {
-    public class AnnouncementManager
+    public class AnnouncementManager : IAnnouncementManager
     {
         private readonly aruizContext _context;
         public AnnouncementManager(aruizContext context)
@@ -11,18 +11,18 @@ namespace mobile_app_messaging_module.Managers
         }
 
 
-        public Annoucement? GetOne(int announcementID)
+        public Announcement? GetOne(int announcementID)
         {
-            var announcement = _context.Announcements.Where(e => e.idAnnoucements == announcementID).FirstOrDefault();
+            var announcement = _context.Announcements.Where(e => e.idAnnouncements == announcementID).FirstOrDefault();
             return announcement;
         }
 
-        public List<Annoucement> GetAll()
+        public List<Announcement> GetAll()
         {
 
-            var announcements = _context.Announcements.Select(x => new Annoucement()
+            var announcements = _context.Announcements.Select(x => new Announcement()
             {
-                idAnnoucements = x.idAnnoucements,
+                idAnnouncements = x.idAnnouncements,
                 title = x.title,
                 description = x.description,
                 type = x.type,
@@ -36,7 +36,7 @@ namespace mobile_app_messaging_module.Managers
             return announcements;
         }
 
-        public List<Annoucement>? GetActive()
+        public List<Announcement>? GetActive()
         {
             var announcements = _context.Announcements.Where(e => e.publishDate < DateTime.Now && e.expirationDate > DateTime.Now).ToList();
             return announcements;
@@ -45,12 +45,12 @@ namespace mobile_app_messaging_module.Managers
         public int Delete(int announcementID)
         {
 
-            var announcementCount = _context.Announcements.Where(e => e.idAnnoucements == announcementID).Count();
+            var announcementCount = _context.Announcements.Where(e => e.idAnnouncements == announcementID).Count();
 
             if (announcementCount > 0)
             {
-                var announcement = new Annoucement();
-                announcement.idAnnoucements = announcementID;
+                var announcement = new Announcement();
+                announcement.idAnnouncements = announcementID;
                 _context.Remove(announcement);
                 _context.SaveChanges();
             }
@@ -58,29 +58,32 @@ namespace mobile_app_messaging_module.Managers
             return announcementCount;
         }
 
-        public Annoucement Create(Annoucement annoucement)
+        public Announcement Create(Announcement announcement)
         {
-         
+
 
             // TODO: Add announcement validation information here
             // Ask Sponsors what fields are required for an announcement to be valid
 
-            _context.Entry(annoucement).State = Microsoft.EntityFrameworkCore.EntityState.Added;
+            // _context.Entry(announcement).State = Microsoft.EntityFrameworkCore.EntityState.Added;
+            _context.Add(announcement);
             _context.SaveChanges();
-            return annoucement;
+            _context.Entry(announcement).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+            _context.SaveChanges();
+            return announcement;
         }
 
 
-        public Annoucement Update(Annoucement annoucement)
+        public Announcement Update(Announcement announcement)
         {
- 
+
 
             // TODO: Add announcement validation information here
             // Ask Sponsors what fields are required for an announcement to be valid
 
-            _context.Update(annoucement);
+            _context.Update(announcement);
             _context.SaveChanges();
-            return annoucement;
+            return announcement;
         }
     }
 }

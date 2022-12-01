@@ -21,7 +21,7 @@ export class AnnouncementManagerComponent implements OnInit {
   }
 
   onDelete(banner: Announcement) {
-    this.bannerService.deleteById(banner.idAnnoucements).subscribe(result => { }, error => console.log(error));
+    this.bannerService.deleteById(banner.idAnnouncements).subscribe(result => { }, error => console.log(error));
     const index = this.announcements.indexOf(banner);
     if (index > -1) {
       this.announcements.splice(index, 1);
@@ -29,7 +29,7 @@ export class AnnouncementManagerComponent implements OnInit {
   }
 
   updatePageLink(banner: Announcement){
-    let uri = '../update/'+banner.idAnnoucements;
+    let uri = '../update/' + banner.idAnnouncements;
     return [uri];
   }
 

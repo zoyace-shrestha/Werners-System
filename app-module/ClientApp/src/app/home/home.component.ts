@@ -14,7 +14,7 @@ export class HomeComponent {
   tomorrow  = new Date();
 
   ann: Announcement = {
-    idAnnoucements: 0,
+    idAnnouncements: 0,
     type: 'Werner Life',
     title: 'Life on the Road Video Series',
     description: 'The latest episode of Life on the Road is available now!',
@@ -33,7 +33,7 @@ export class HomeComponent {
   update() {
     //this is necessary because we're using the input for testing
     let updatedAnn = _.cloneDeep(this.ann);
-    updatedAnn.idAnnoucements = this.testVal;
+    updatedAnn.idAnnouncements = this.testVal;
     updatedAnn.type = 'UPDATED';
     return this.bannerService.update(updatedAnn).subscribe();
   } 

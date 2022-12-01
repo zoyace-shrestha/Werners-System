@@ -1,5 +1,5 @@
 export interface Announcement {
-  idAnnoucements: number;
+  idAnnouncements: number;
   title: string;
   description: string;
   type: string;
@@ -12,7 +12,7 @@ export interface Announcement {
 
 export function blankAnnouncement(id: number): Announcement{
   return {
-      idAnnoucements: id,
+      idAnnouncements: id,
       title: "",
       description: "",
       type: "",
