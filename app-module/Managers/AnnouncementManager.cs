@@ -10,16 +10,9 @@ namespace mobile_app_messaging_module.Managers
             _context = context;
         }
 
-
-        public Announcement? GetOne(int announcementID)
+        public List<Announcement>? GetList(GetAnnouncementsModel getAnnouncementsModel)
         {
-            var announcement = _context.Announcements.Where(e => e.idAnnouncements == announcementID).FirstOrDefault();
-            return announcement;
-        }
-
-        public List<Announcement> GetAll()
-        {
-
+            // Retrieve all of the announcements
             var announcements = _context.Announcements.Select(x => new Announcement()
             {
                 idAnnouncements = x.idAnnouncements,
@@ -33,18 +26,57 @@ namespace mobile_app_messaging_module.Managers
                 isDraft = x.isDraft,
             }).ToList();
 
+            // Remove the announcements if they do not fit the request parameters
+
+            if(!getAnnouncementsModel.includePrevious) { announcements.RemoveAll(isPrevious); }
+
+            if(!getAnnouncementsModel.includeActive) { announcements.RemoveAll(isActive); }
+
+            if(!getAnnouncementsModel.includeFuture) { announcements.RemoveAll(isFuture); }
+
+            // Looking for both draft and published announcements
+
+            if(!getAnnouncementsModel.includeDraft) { announcements.RemoveAll(isDraft); }
+
+            if(!getAnnouncementsModel.includePublished) { announcements.RemoveAll(isPublished); }
+
             return announcements;
         }
 
-        public List<Announcement>? GetActive()
+        private static bool isDraft(Announcement announcement)
         {
-            var announcements = _context.Announcements.Where(e => e.publishDate < DateTime.Now && e.expirationDate > DateTime.Now).ToList();
-            return announcements;
+            return announcement.isDraft == true;
+        }
+
+        private static bool isPublished(Announcement announcement)
+        {
+            return announcement.isDraft == false;
+        }
+
+        private static bool isPrevious(Announcement announcement)
+        {
+            return announcement.expirationDate < DateTime.Now && announcement.expirationDate != new DateTime(1970, 1, 1);
+        }
+
+        private static bool isActive(Announcement announcement)
+        {
+            return announcement.publishDate < DateTime.Now && (announcement.expirationDate > DateTime.Now || announcement.expirationDate == new DateTime(1970, 1, 1));
+        }
+
+        private static bool isFuture(Announcement announcement)
+        {
+            return announcement.publishDate > DateTime.Now;
+        }
+
+
+        public Announcement? GetOne(int announcementID)
+        {
+            var announcement = _context.Announcements.Where(e => e.idAnnouncements == announcementID).FirstOrDefault();
+            return announcement;
         }
 
         public int Delete(int announcementID)
         {
-
             var announcementCount = _context.Announcements.Where(e => e.idAnnouncements == announcementID).Count();
 
             if (announcementCount > 0)
@@ -60,12 +92,8 @@ namespace mobile_app_messaging_module.Managers
 
         public Announcement Create(Announcement announcement)
         {
-
-
             // TODO: Add announcement validation information here
             // Ask Sponsors what fields are required for an announcement to be valid
-
-            // _context.Entry(announcement).State = Microsoft.EntityFrameworkCore.EntityState.Added;
             _context.Add(announcement);
             _context.SaveChanges();
             _context.Entry(announcement).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
@@ -76,11 +104,8 @@ namespace mobile_app_messaging_module.Managers
 
         public Announcement Update(Announcement announcement)
         {
-
-
             // TODO: Add announcement validation information here
             // Ask Sponsors what fields are required for an announcement to be valid
-
             _context.Update(announcement);
             _context.SaveChanges();
             return announcement;

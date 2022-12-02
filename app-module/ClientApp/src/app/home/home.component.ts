@@ -27,8 +27,7 @@ export class HomeComponent {
   
   getAnnouncementById = () => this.bannerService.getAnnouncementById(this.testVal).subscribe();
   getAll = () => this.bannerService.getAll().subscribe();
-  getActive = () => this.bannerService.getActive().subscribe();
-  generateTitles = () => this.bannerService.generateTitles().subscribe();
+  getActive = () => this.bannerService.getActivePublished().subscribe();
   create = () => this.bannerService.create(this.ann).subscribe();
   update() {
     //this is necessary because we're using the input for testing
@@ -41,5 +40,4 @@ export class HomeComponent {
   ngOnInit(): void {
     this.tomorrow.setDate(this.tomorrow.getDate() + 1);
   }
-
 }

@@ -3,6 +3,7 @@ import { Announcement } from './announcement';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
+import { AnnouncementSearch, getDefaultSearch} from './announcementSearch';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +21,24 @@ export class BannerService {
         catchError(this.handleError<Announcement>(path  + ' call unsuccessful'))
     );  
   }
-  getAll = ():Observable<Announcement[]> => this.makeGetListCall('/getAll');
+  getAll = ():Observable<Announcement[]> => {
+    return this.makePostListCall('/getAnnouncements', getDefaultSearch())
+  };
 
-  getActive  = ():Observable<Announcement[]> => this.makeGetListCall('/getActive');
+  getActivePublished  = ():Observable<Announcement[]> => {
+    let searchObject: AnnouncementSearch = getDefaultSearch();
+    searchObject.includeFuture = false;
+    searchObject.includeDraft = false;
+    searchObject.includePrevious = false;
+    return this.makePostListCall('/getAnnouncements', searchObject);
+  }
+
+  getActiveAndFuturePublished  = ():Observable<Announcement[]> => {
+    let searchObject: AnnouncementSearch = getDefaultSearch();
+    searchObject.includeDraft = false;
+    searchObject.includePrevious = false;    
+    return this.makePostListCall('/getAnnouncements', searchObject);
+  }
 
   deleteById(id: Number) {
     let path = "/delete/" + id;
@@ -35,18 +51,14 @@ export class BannerService {
 
   create = (announcement: Announcement):Observable<Announcement> => this.makePostCall('/create', announcement);
   update = (announcement: Announcement):Observable<Announcement> => this.makePostCall('/update', announcement);
-  generateTitles = ():Observable<Announcement[]> => this.makeGetListCall('/generateTitles');
-
-  private makeGetListCall(path: String){
-    return this.http.get<Announcement[]>(this.baseUrl + path)
-      .pipe(
-        tap(list => console.log(path + ' call successful.', list)),
-        catchError(this.handleError<Announcement[]>(path  + ' call unsuccessful', []))
-    );
-  }
 
   private makePostCall(path: String, body: Announcement){
     return this.http.post<Announcement>(this.baseUrl + path, body)
+      .pipe(tap(Announcement => console.log(path + ' call successful.', Announcement)));
+  }
+
+  private makePostListCall(path: String, body: AnnouncementSearch){
+    return this.http.post<Announcement[]>(this.baseUrl + path, body)
       .pipe(tap(Announcement => console.log(path + ' call successful.', Announcement)));
   }
 

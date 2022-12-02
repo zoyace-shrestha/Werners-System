@@ -40,7 +40,7 @@ export class AnnouncementBannerComponent implements OnInit {
   constructor(private bannerService: BannerService) { }
 
   ngOnInit(): void {
-    this.bannerService.getActive().subscribe(banners => {
+    this.bannerService.getActivePublished().subscribe(banners => {
       this.announcementList = banners;
       setTimeout(() => {
         this.swiperSlideShow.swiperRef.autoplay.start(); 

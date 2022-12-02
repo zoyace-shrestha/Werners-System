@@ -18,11 +18,6 @@ public class aruizContext : DbContext
     }
     public aruizContext(DbContextOptions<aruizContext> options) : base(options)
     {
-        //var builder = new ConfigurationBuilder();
-        //builder.AddJsonFile("appsettings.json", optional: false);
-
-        //var configuration = builder.Build();
-
         _table = "Announcements";
         _connectionString = "Server=cse.unl.edu; Port=3306; Database=aruiz; Uid=aruiz; Pwd=uHVUeBooNA8;";
     }

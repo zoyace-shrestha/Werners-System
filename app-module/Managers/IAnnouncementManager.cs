@@ -2,11 +2,9 @@
 
 public interface IAnnouncementManager
 {
+    public List<Announcement>? GetList(GetAnnouncementsModel getAnnouncementsModel);
+
     public Announcement? GetOne(int announcementID);
-
-    public List<Announcement> GetAll();
-
-    public List<Announcement>? GetActive();
 
     public int Delete(int announcementID);
 

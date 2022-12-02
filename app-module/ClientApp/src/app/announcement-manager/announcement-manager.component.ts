@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { result } from 'lodash';
 import { Announcement } from '../announcement';
 import { BannerService } from '../banner.service';
+import { ItemReorderEventDetail } from '@ionic/angular';
 
 @Component({
   selector: 'app-announcement-manager',
@@ -33,9 +34,14 @@ export class AnnouncementManagerComponent implements OnInit {
     return [uri];
   }
 
+  handleReorder(ev: CustomEvent<ItemReorderEventDetail>) {
+    // console.log('Dragged from index', ev.detail.from, 'to', ev.detail.to);
+    ev.detail.complete();
+  }
+
   ngOnInit() {
     // Retrieve active banners
-    this.bannerService.getActive().subscribe(banners => {
+    this.bannerService.getActiveAndFuturePublished().subscribe(banners => {
       this.announcements = banners;
       hideloader();
     });

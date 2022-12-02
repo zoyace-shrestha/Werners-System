@@ -55,8 +55,9 @@ public class Startup
         app.UseStaticFiles();
 
         app.UseRouting();
-        // app.useCors(MyAllowSpecificOrigins);
+
         app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
         app.UseEndpoints(endpoints => {
             endpoints.MapControllers();
         });

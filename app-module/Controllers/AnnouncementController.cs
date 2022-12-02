@@ -14,7 +14,6 @@ namespace mobile_app_messaging_module.Controllers
     public class AnnouncementController : ControllerBase
     {
         // private readonly IAnnouncementManager AnnouncementManager;
-
         private readonly aruizContext _context;
         private readonly AnnouncementManager announcementManager;
 
@@ -24,25 +23,16 @@ namespace mobile_app_messaging_module.Controllers
             announcementManager = new AnnouncementManager(context);
         }
 
+        [HttpPost("getAnnouncements")]
+        public JsonResult GetAnnouncements([FromBody()] GetAnnouncementsModel getAnnouncementsModel)
+        {
+            return new JsonResult(announcementManager.GetList(getAnnouncementsModel));
+        }
 
         [HttpGet("{announcementId}")]
         public JsonResult GetOne(int announcementId)
         {
             return new JsonResult(announcementManager.GetOne(announcementId));
-        }
-
-
-        [HttpGet("getAll")]
-        public JsonResult GetAll()
-        {
-            return new JsonResult(announcementManager.GetAll());
-        }
-
-
-        [HttpGet("getActive")]
-        public JsonResult GetActive()
-        {
-            return new JsonResult(announcementManager.GetActive());
         }
 
         [HttpDelete("delete/{announcementId}")]
@@ -60,13 +50,11 @@ namespace mobile_app_messaging_module.Controllers
             return new JsonResult(announcement);
         }
 
-
         [HttpPost("update")]
         public JsonResult Update([FromBody()] Announcement announcement)
         {
             announcementManager.Update(announcement);
             return new JsonResult(announcement);
         }
-
     }
 }
