@@ -14,6 +14,6 @@ namespace mobile_app_messaging_module.DataModels
         public DateTime? publishDate { get; set; }
         public DateTime? expirationDate { get; set; }
         public Boolean? isDraft { get; set; }
-
+        public int? priority { get; set; }
     }
 }

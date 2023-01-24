@@ -26,7 +26,7 @@ namespace mobile_app_messaging_module.Managers
                 isDraft = x.isDraft,
             }).ToList();
 
-            // Remove the announcements if they do not fit the request parameters
+            // Remove the announcements if they do not fit the date parameters
 
             if(!getAnnouncementsModel.includePrevious) { announcements.RemoveAll(isPrevious); }
 
@@ -34,7 +34,7 @@ namespace mobile_app_messaging_module.Managers
 
             if(!getAnnouncementsModel.includeFuture) { announcements.RemoveAll(isFuture); }
 
-            // Looking for both draft and published announcements
+            // Remove the announcements if they do not fit the publish parameters
 
             if(!getAnnouncementsModel.includeDraft) { announcements.RemoveAll(isDraft); }
 
@@ -92,8 +92,6 @@ namespace mobile_app_messaging_module.Managers
 
         public Announcement Create(Announcement announcement)
         {
-            // TODO: Add announcement validation information here
-            // Ask Sponsors what fields are required for an announcement to be valid
             _context.Add(announcement);
             _context.SaveChanges();
             _context.Entry(announcement).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
@@ -104,11 +102,17 @@ namespace mobile_app_messaging_module.Managers
 
         public Announcement Update(Announcement announcement)
         {
-            // TODO: Add announcement validation information here
-            // Ask Sponsors what fields are required for an announcement to be valid
             _context.Update(announcement);
             _context.SaveChanges();
             return announcement;
         }
+
+        public List<Announcement> Reorder(List<Announcement> announcements)
+        {
+            _context.UpdateRange(announcements);
+            _context.SaveChanges();
+            return announcements;
+        }
+
     }
 }

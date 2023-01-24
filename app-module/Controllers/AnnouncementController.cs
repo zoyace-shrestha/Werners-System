@@ -13,7 +13,7 @@ namespace mobile_app_messaging_module.Controllers
     [ApiController]
     public class AnnouncementController : ControllerBase
     {
-        // private readonly IAnnouncementManager AnnouncementManager;
+
         private readonly aruizContext _context;
         private readonly AnnouncementManager announcementManager;
 
@@ -39,7 +39,6 @@ namespace mobile_app_messaging_module.Controllers
         public JsonResult Delete(int announcementId)
         {
             var deleteCount = announcementManager.Delete(announcementId);
-            // Return the number of rows deleted (hopefully just one...)
             return new JsonResult(new { deleteCount = deleteCount });
         }
 
@@ -56,5 +55,13 @@ namespace mobile_app_messaging_module.Controllers
             announcementManager.Update(announcement);
             return new JsonResult(announcement);
         }
+
+        [HttpPost("reorder")]
+        public JsonResult Reorder([FromBody()] List<Announcement> announcements)
+        {
+            announcementManager.Reorder(announcements);
+            return new JsonResult(announcements);
+        }
+
     }
 }
