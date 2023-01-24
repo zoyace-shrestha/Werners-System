@@ -6,14 +6,16 @@
     <ion-card-content>
       <ion-row>
         <ion-col size = "10" offset ="1">
-          <ion-item counter="true">
+          <ion-item counter="true" [ngClass]="validationClass(validation.titleState)">
             <ion-label position="stacked">Title</ion-label>
-            <ion-input maxlength="48" [(ngModel)]="announcement.title" placeholder="Example Title"></ion-input>
+            <ion-input maxlength="48" [(ngModel)]="announcement.title" placeholder="Example Title" (ionInput)="validation.titleState = null"></ion-input>
+            <ion-note slot="error">Title is required.</ion-note>
           </ion-item>
 
-          <ion-item counter="true">
+          <ion-item counter="true" [ngClass]="validationClass(validation.descriptionState)">
             <ion-label position="stacked">Desciption</ion-label>
-            <ion-input maxlength="170" [(ngModel)]="announcement.description" placeholder="This is the description"></ion-input>
+            <ion-input maxlength="170" [(ngModel)]="announcement.description" placeholder="This is the description" (ionInput)="validation.descriptionState = null"></ion-input>
+            <ion-note slot="error">Description is required for non-draft.</ion-note>
           </ion-item>
 
           <ion-item>
@@ -23,7 +25,7 @@
 
           <ion-row>
             <ion-col>
-              <ion-item id="publishDate">
+              <ion-item id="publishDate" [ngClass]="validationClass(validation.publishDateState)">
                 <ion-label position="stacked">Publish Date</ion-label>
                 <ion-input
                   class="date-input"
@@ -41,6 +43,7 @@
                     </ion-datetime>
                   </ng-template>
                 </ion-modal>
+                <ion-note slot="error">Publish Date is required for non-draft and must be valid.</ion-note>
               </ion-item>
             </ion-col>
 
@@ -70,23 +73,24 @@
           <ion-row>
             <ion-col>
               <ion-list>
-                <ion-item>
+                <ion-item [ngClass]="validationClass(validation.typeState)">
                   <ion-label position="stacked">Type</ion-label>
-                  <ion-select placeholder="News" [(ngModel)]="announcement.type" [multiple]="false">
+                  <ion-select placeholder="News" [(ngModel)]="announcement.type" [multiple]="false" (ionChange)="validation.typeState = null">
                     <ion-select-option selected value="Werner News">News</ion-select-option>
                     <ion-select-option value="Rewards">Rewards<ion-label></ion-label></ion-select-option>
                     <ion-select-option value="COVID-19">COVID-19</ion-select-option>
                     <ion-select-option value="IMPORTANT!">IMPORTANT!</ion-select-option>
                     <ion-select-option value="Recognition">Recognition</ion-select-option>
                   </ion-select>
+                  <ion-note slot="error">Type is required for non-draft.</ion-note>
                 </ion-item>
               </ion-list>
             </ion-col>
             <ion-col>
               <ion-list>
-                <ion-item>
+                <ion-item [ngClass]="validationClass(validation.backgroundState)">
                   <ion-label position="stacked">Background</ion-label>
-                  <ion-select placeholder="White" [(ngModel)]="announcement.background" [multiple]="false">
+                  <ion-select placeholder="White" [(ngModel)]="announcement.background" [multiple]="false" (ionChange)="validation.backgroundState = null">
                     <ion-select-option value="light">White</ion-select-option>
                     <ion-select-option value="primary">Primary<ion-label></ion-label></ion-select-option>
                     <ion-select-option value="secondary">Secondary</ion-select-option>
@@ -95,6 +99,7 @@
                     <ion-select-option value="warning">Warning</ion-select-option>
                     <ion-select-option value="danger">Danger</ion-select-option>
                   </ion-select>
+                  <ion-note slot="error">Background is required for non-draft.</ion-note>
                 </ion-item>
               </ion-list>
             </ion-col>
