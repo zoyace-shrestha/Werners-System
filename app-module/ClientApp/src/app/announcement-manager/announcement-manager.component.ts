@@ -15,10 +15,15 @@ export class AnnouncementManagerComponent implements OnInit {
 
   constructor(private bannerService: BannerService) { }
 
-  dateFormat(dateString: string) {
-    let date = new Date(dateString);
-    const options: Intl.DateTimeFormatOptions = { weekday: undefined, year: 'numeric', month: 'short', day: 'numeric' };
+  expirationDateFormat(announcement: Announcement) {
+    let date = this.getExpirationDate(announcement);
+    const options: Intl.DateTimeFormatOptions = {weekday: undefined, year: 'numeric', month: 'short', day: 'numeric' };
     return date.toLocaleDateString(undefined, options);
+  } 
+
+  getExpirationDate(announcement: Announcement): Date{
+    if (typeof announcement.expirationDate == typeof Date) return announcement.expirationDate;
+    return new Date(announcement.expirationDate);
   }
 
   onDelete(banner: Announcement) {

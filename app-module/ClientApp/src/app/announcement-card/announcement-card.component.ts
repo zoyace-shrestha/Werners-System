@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Announcement } from '../announcement';
 import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser';
+import { LiteralExpr } from '@angular/compiler';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-announcement-card',
@@ -39,11 +41,33 @@ export class AnnouncementCardComponent implements OnInit {
     }
     
   }
-
+  public linkChecker(link: string) {
+    if (this.announcement?.link) {
+      return "cursor: pointer;";
+    }
+    return "";
+  }
+  
   ngOnInit(): void {  }
-  dateFormat(dateString: string) {
-    let date = new Date(dateString);
+  publishDateFormat(announcement: Announcement) {
+    let date = this.getPublishDate(announcement);
     const options: Intl.DateTimeFormatOptions = {weekday: undefined, year: 'numeric', month: 'short', day: 'numeric' };
     return date.toLocaleDateString(undefined, options);
   } 
+
+  getPublishDate(announcement: Announcement): Date{
+    if (typeof announcement.publishDate == typeof Date) return announcement.publishDate;
+    return new Date(announcement.publishDate);
+  }
+
+  publishDateValid(announcement: Announcement){
+    return this.getPublishDate(announcement) > new Date(2000,1);
+  }
+
+  publishDateNew(announcement: Announcement, upToDaysOld: number = 14){
+    let bound = new Date();
+    bound.setDate(bound.getDate() - upToDaysOld);
+    return this.getPublishDate(announcement) > bound;
+  }
+
 }

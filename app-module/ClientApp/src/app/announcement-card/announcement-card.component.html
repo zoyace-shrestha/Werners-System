@@ -1,16 +1,15 @@
 <div *ngIf="announcement">
-  <a [routerLink]="" (click)="openWithSystemBrowser(announcement.link)">
+  <a [routerLink]="" (click)="openWithSystemBrowser(announcement.link)" [style]="linkChecker(announcement.link)">
   <ion-card id="announcement-card" color="{{announcement.background}}">
     <ion-card-header id="heading-container">
       <div id="announcement-heading">
-        <ion-card-title id="announcement-type">{{announcement.type}}</ion-card-title>
-        <span id="announcement-date">{{ dateFormat(announcement.expirationDate.toString()) }}</span>
+        <ion-card-title id="announcement-type">{{announcement.type}}<span *ngIf="publishDateNew(announcement, 14)"> - New</span></ion-card-title>
+        <span id="announcement-date" *ngIf="publishDateValid(announcement)">{{ publishDateFormat(announcement) }}</span>
       </div>
       <ion-card-subtitle id="announcement-title">{{announcement.title}}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content id="announcement-description">
       {{announcement.description}}
-      
     </ion-card-content>
     <div id="announcement-link" *ngIf="announcement.link">
          <ion-icon  name="open-outline"></ion-icon>
