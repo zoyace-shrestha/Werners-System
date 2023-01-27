@@ -70,7 +70,6 @@ export class BannerService {
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
-    console.log("here")
     return (error: any): Observable<T> => {
       console.error(error);
       console.log(`${operation} failed: ${error.message}`);
