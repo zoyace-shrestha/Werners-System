@@ -41,7 +41,16 @@ export class AnnouncementManagerComponent implements OnInit {
 
   handleReorder(ev: CustomEvent<ItemReorderEventDetail>) {
     // console.log('Dragged from index', ev.detail.from, 'to', ev.detail.to);
-    ev.detail.complete();
+    this.announcements = ev.detail.complete(this.announcements);
+    this.announcements.forEach((element, index) => {
+      element.priority = index+1;
+    });
+
+    if(this.announcements){
+      console.table(this.announcements);
+      this.bannerService.reorder(this.announcements).subscribe(result => { }, error => console.log(error));
+    }
+
   }
 
   ngOnInit() {
