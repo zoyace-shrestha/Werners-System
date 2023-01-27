@@ -17,11 +17,9 @@ namespace mobile_app_messaging_module.Managers
                         orderby a.priority
                         select a;
             
-            
             var announcements = query.ToList();
 
         
-
             // Remove the announcements if they do not fit the date parameters
 
             if(!getAnnouncementsModel.includePrevious) { announcements.RemoveAll(isPrevious); }

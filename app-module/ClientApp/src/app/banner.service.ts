@@ -4,14 +4,7 @@ import { Observable, ObservableInput, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { AnnouncementSearch, getDefaultSearch} from './announcementSearch';
-import {
-  HttpInterceptor,
-  HttpRequest,
-  HttpErrorResponse,
-  HttpHandler,
-  HttpEvent,
-  HttpResponse
-} from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
