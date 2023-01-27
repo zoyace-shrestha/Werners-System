@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Announcement } from './announcement';
-import { Observable, of } from 'rxjs';
+import { Observable, ObservableInput, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { AnnouncementSearch, getDefaultSearch} from './announcementSearch';
-
+import {
+  HttpInterceptor,
+  HttpRequest,
+  HttpErrorResponse,
+  HttpHandler,
+  HttpEvent,
+  HttpResponse
+} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -51,18 +58,26 @@ export class BannerService {
 
   create = (announcement: Announcement):Observable<Announcement> => this.makePostCall('/create', announcement);
   update = (announcement: Announcement):Observable<Announcement> => this.makePostCall('/update', announcement);
+  reorder = (announcements: Announcement[]):Observable<Announcement[]> => this.makePostReorderCall('/reorder', announcements);
 
   private makePostCall(path: String, body: Announcement){
     return this.http.post<Announcement>(this.baseUrl + path, body)
       .pipe(tap(Announcement => console.log(path + ' call successful.', Announcement)));
   }
 
+  private makePostReorderCall(path: String, body: Announcement[]) {
+    return this.http.post<Announcement[]>(this.baseUrl + path, body)
+      .pipe(tap(Announcement => console.log(path + ' call successful.', Announcement)), )
+      
+  }
+  
   private makePostListCall(path: String, body: AnnouncementSearch){
     return this.http.post<Announcement[]>(this.baseUrl + path, body)
       .pipe(tap(Announcement => console.log(path + ' call successful.', Announcement)));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
+    console.log("here")
     return (error: any): Observable<T> => {
       console.error(error);
       console.log(`${operation} failed: ${error.message}`);

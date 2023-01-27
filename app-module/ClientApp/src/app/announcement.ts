@@ -8,6 +8,7 @@ export interface Announcement {
   publishDate: Date;
   expirationDate: Date;
   isDraft: boolean;
+  priority?: number;
 }
 
 export function blankAnnouncement(id: number): Announcement{
@@ -20,6 +21,7 @@ export function blankAnnouncement(id: number): Announcement{
       background: "",
       publishDate: new Date(0),
       expirationDate: new Date(0),
-      isDraft: false
+      isDraft: false,
+      priority: undefined
   }
 } 
