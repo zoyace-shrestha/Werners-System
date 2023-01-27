@@ -13,18 +13,14 @@ namespace mobile_app_messaging_module.Managers
         public List<Announcement>? GetList(GetAnnouncementsModel getAnnouncementsModel)
         {
             // Retrieve all of the announcements
-            var announcements = _context.Announcements.Select(x => new Announcement()
-            {
-                idAnnouncements = x.idAnnouncements,
-                title = x.title,
-                description = x.description,
-                type = x.type,
-                link = x.link,
-                background = x.background,
-                publishDate = x.publishDate,
-                expirationDate = x.expirationDate,
-                isDraft = x.isDraft,
-            }).ToList();
+            var query = from a in _context.Announcements
+                        orderby a.priority
+                        select a;
+            
+            
+            var announcements = query.ToList();
+
+        
 
             // Remove the announcements if they do not fit the date parameters
 
