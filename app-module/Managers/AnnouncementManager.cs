@@ -13,13 +13,21 @@ namespace mobile_app_messaging_module.Managers
         public List<Announcement>? GetList(GetAnnouncementsModel getAnnouncementsModel)
         {
             // Retrieve all of the announcements
-            var query = from a in _context.Announcements
+            var announcements = new List<Announcement>();
+ 
+            if (getAnnouncementsModel.searchText != null && getAnnouncementsModel.searchText.Length > 0)
+            {
+                announcements = (from a in _context.Announcements
+                        where a.description.Contains(getAnnouncementsModel.searchText) || a.title.Contains(getAnnouncementsModel.searchText)
                         orderby a.priority
-                        select a;
-            
-            var announcements = query.ToList();
+                        select a).ToList();
+            } else
+            {
+                announcements = (from a in _context.Announcements
+                        orderby a.priority
+                        select a).ToList();
+            }
 
-        
             // Remove the announcements if they do not fit the date parameters
 
             if(!getAnnouncementsModel.includePrevious) { announcements.RemoveAll(isPrevious); }

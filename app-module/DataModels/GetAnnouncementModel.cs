@@ -9,5 +9,6 @@ namespace mobile_app_messaging_module.DataModels
         public Boolean includeFuture { get; set; }
         public Boolean includeDraft { get; set; }
         public Boolean includePublished { get; set; }
+        public string? searchText { get; set; }
     }
 }
