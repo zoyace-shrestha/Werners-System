@@ -3,6 +3,8 @@ import { result } from 'lodash';
 import { Announcement } from '../announcement';
 import { BannerService } from '../banner.service';
 import { ItemReorderEventDetail } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
+import { toast } from '../toasthelper';
 
 @Component({
   selector: 'app-announcement-manager',
@@ -13,7 +15,19 @@ export class AnnouncementManagerComponent implements OnInit {
 
   announcements: Array<Announcement> = [];
 
-  constructor(private bannerService: BannerService) { }
+  constructor(private bannerService: BannerService, private toastController: ToastController) { }
+
+  deleteSuccessful(banner: Announcement) {
+    const index = this.announcements.indexOf(banner);
+    if (index > -1) {
+      this.announcements.splice(index, 1);
+    }
+    toast('success', 'Delete successful', this.toastController);
+  }
+
+  deleteFailed() {
+    toast('danger','Delete failed', this.toastController);
+  }
 
   expirationDateFormat(announcement: Announcement) {
     let date = this.getExpirationDate(announcement);
@@ -27,11 +41,7 @@ export class AnnouncementManagerComponent implements OnInit {
   }
 
   onDelete(banner: Announcement) {
-    this.bannerService.deleteById(banner.idAnnouncements).subscribe(result => { }, error => console.log(error));
-    const index = this.announcements.indexOf(banner);
-    if (index > -1) {
-      this.announcements.splice(index, 1);
-    }
+    this.bannerService.deleteById(banner.idAnnouncements).subscribe(() => this.deleteSuccessful(banner), () => this.deleteFailed());
   }
 
   updatePageLink(banner: Announcement){
@@ -40,14 +50,12 @@ export class AnnouncementManagerComponent implements OnInit {
   }
 
   handleReorder(ev: CustomEvent<ItemReorderEventDetail>) {
-    // console.log('Dragged from index', ev.detail.from, 'to', ev.detail.to);
     this.announcements = ev.detail.complete(this.announcements);
     this.announcements.forEach((element, index) => {
       element.priority = index+1;
     });
 
     if(this.announcements){
-      console.table(this.announcements);
       this.bannerService.reorder(this.announcements).subscribe(result => { }, error => console.log(error));
     }
 
@@ -63,8 +71,6 @@ export class AnnouncementManagerComponent implements OnInit {
     // Hide loading component
     function hideloader() {
       const loadingComponent = document.getElementById('loading');
-      console.log("hiding")
-      console.log(loadingComponent);
       if (!loadingComponent) return;
       loadingComponent.style.display = 'none'
     }
