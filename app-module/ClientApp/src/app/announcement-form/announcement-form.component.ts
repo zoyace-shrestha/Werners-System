@@ -85,6 +85,7 @@ export class AnnouncementFormComponent implements OnInit {
     this.expirationDate = this.announcement?.expirationDate.toISOString();
     this.publishDateLabel = "";
     this.expirationDateLabel = ""
+    this.resetValidation();
   }
 
   // Publish Date: Update announcement property and label value when ion-datetime value is changed
@@ -129,6 +130,14 @@ export class AnnouncementFormComponent implements OnInit {
   // When input values are updated
   ngOnChanges(_ : OnChanges) {
     this.updateDateValues()
+  }
+
+  resetValidation(){
+    this.validation.titleState = null;
+    this.validation.descriptionState = null;
+    this.validation.typeState = null;
+    this.validation.backgroundState = null;
+    this.validation.publishDateState = null;
   }
 
   ngOnInit(): void { }
