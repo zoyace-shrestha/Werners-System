@@ -29,6 +29,10 @@ export class AnnouncementManagerComponent implements OnInit {
     toast('danger','Delete failed', this.toastController);
   }
 
+  expirationDateValid(announcement: Announcement){
+    return this.getExpirationDate(announcement) > new Date(2000,1);
+  }
+
   expirationDateFormat(announcement: Announcement) {
     let date = this.getExpirationDate(announcement);
     const options: Intl.DateTimeFormatOptions = {weekday: undefined, year: 'numeric', month: 'short', day: 'numeric' };
@@ -38,6 +42,11 @@ export class AnnouncementManagerComponent implements OnInit {
   getExpirationDate(announcement: Announcement): Date{
     if (typeof announcement.expirationDate == typeof Date) return announcement.expirationDate;
     return new Date(announcement.expirationDate);
+  }
+
+  getPublishDate(announcement: Announcement): Date{
+    if (typeof announcement.publishDate == typeof Date) return announcement.publishDate;
+    return new Date(announcement.publishDate);
   }
 
   onDelete(banner: Announcement) {
@@ -60,6 +69,20 @@ export class AnnouncementManagerComponent implements OnInit {
     }
 
   }
+
+  getClass(announcement: Announcement){
+    if (announcement?.expirationDate) {
+      let expirationDate  = this.getExpirationDate(announcement);
+      if (this.expirationDateValid(announcement)){
+        if (this.getPublishDate(announcement) > new Date()) return 'expiration-green';
+        let bound = new Date();
+        bound.setDate(bound.getDate() + 14);
+        return expirationDate > bound ? 'expiration-blue' : 'expiration-red';
+      }
+    }
+    return "";
+  }  
+
 
   ngOnInit() {
     // Retrieve active banners

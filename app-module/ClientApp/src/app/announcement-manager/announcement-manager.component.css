@@ -179,3 +179,18 @@ ion-modal#example-modal .wrapper {
   --width: 400px !important;
   height: auto !important;
 }
+
+.expiration-green {
+  background-color: rgba(47, 211, 111, 0.1);
+  color: #218719;
+}
+
+.expiration-blue {
+  background-color:  rgba(56, 128, 255, 0.1);
+  color: #3369B4;
+}
+
+.expiration-red {
+  background-color: rgba(236, 68, 90, 0.1);
+  color:  #C03131;
+}
