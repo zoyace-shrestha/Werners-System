@@ -59,24 +59,20 @@ export class AnnouncementFormComponent implements OnInit {
     }
   }
 
-  validate(isDraft: Boolean = false){
+  validate(isDraft: Boolean = false) {
+      this.resetValidation();
       this.validation.titleState = !!this.announcement.title;
-      let minDate = new Date(2000, 1);
-      if (!isDraft) {
-        this.validation.backgroundState = !!this.announcement.background;
-        this.validation.descriptionState = !!this.announcement.description;
-        this.validation.publishDateState = this.announcement.publishDate && new Date(this.announcement.publishDate) >= minDate;
-        this.validation.typeState = !!this.announcement.type;
-      } 
-      console.log('expirationDate', this.announcement.expirationDate);
-      console.log('minDate', minDate);
+      if (isDraft) return this.validation.titleState;
+      this.validation.backgroundState = !!this.announcement.background;
+      this.validation.descriptionState = !!this.announcement.description;
+      this.validation.publishDateState = this.announcement.publishDate && new Date(this.announcement.publishDate) >= new Date(2000, 1);
+      this.validation.typeState = !!this.announcement.type;
       return this.validation.valid();
   }
 
   validationClass(input: Boolean | null) {
-      if (input === false) return 'ion-invalid';
-      return null;
-  }
+      return (input === false) ? 'ion-invalid' : null;
+    }
 
   // Reset announcement to blank announcement
   reset(){
@@ -134,6 +130,10 @@ export class AnnouncementFormComponent implements OnInit {
 
   resetValidation(){
     this.validation.titleState = null;
+    this.resetAllValidationExceptTitle();
+  }
+
+  resetAllValidationExceptTitle(){
     this.validation.descriptionState = null;
     this.validation.typeState = null;
     this.validation.backgroundState = null;
