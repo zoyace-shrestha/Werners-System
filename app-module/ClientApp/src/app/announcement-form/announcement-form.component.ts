@@ -20,6 +20,8 @@ export class AnnouncementFormComponent implements OnInit {
   @Input() saveButtonTitle?: String;
   @Input() saveDraftButtonTitle?: String;
   @Input() isUpdate?: Boolean;
+  @Input() previousURL: String = "/announcementManager";
+  @Input() isPrevious: Boolean = false;
 
   // Announcement Date Variables
   publishDate: String = this.announcement?.publishDate.toISOString();
@@ -29,9 +31,19 @@ export class AnnouncementFormComponent implements OnInit {
 
   validation = new AnnouncementValidation();
 
-  resultToast = {
+  // Toast notifications for deleting an announcement
+  deleteResultToast = {
     next: () => {
-      this.router.navigate(['/announcementManager']);
+      this.router.navigate([this.previousURL]);
+      toast('success', 'Delete successful', this.toastController);
+    }, 
+    error: () => toast('danger','Delete failed', this.toastController)
+  }
+
+  // Toast notifications for saving an announcement
+  saveResultToast = {
+    next: () => {
+      this.router.navigate([this.previousURL]);
       toast('success', 'Save successful', this.toastController);
     }, 
     error: () => toast('danger','Save failed', this.toastController)
@@ -42,9 +54,9 @@ export class AnnouncementFormComponent implements OnInit {
     if (!this.validate(true)) return;
     this.announcement.isDraft = true;
     if (!this.isUpdate){
-      this.bannerService.create(this.announcement).subscribe(this.resultToast);
+      this.bannerService.create(this.announcement).subscribe(this.saveResultToast);
     } else {
-      this.bannerService.update(this.announcement).subscribe(this.resultToast);
+      this.bannerService.update(this.announcement).subscribe(this.saveResultToast);
     }
   }
 
@@ -53,9 +65,9 @@ export class AnnouncementFormComponent implements OnInit {
     if (!this.validate()) return;
     this.announcement.isDraft = false;
     if (!this.isUpdate){
-      this.bannerService.create(this.announcement).subscribe(this.resultToast);
+      this.bannerService.create(this.announcement).subscribe(this.saveResultToast);
     } else {
-      this.bannerService.update(this.announcement).subscribe(this.resultToast);
+      this.bannerService.update(this.announcement).subscribe(this.saveResultToast);
     }
   }
 
@@ -95,6 +107,10 @@ export class AnnouncementFormComponent implements OnInit {
   expirationDateChanged(value: any) {
     this.announcement.expirationDate = value;
     this.expirationDateLabel = formatDate(value, 'MM/dd/yyyy - hh:mm a', 'en-US');
+  }
+
+  onDelete(banner: Announcement) {
+    this.bannerService.deleteById(banner.idAnnouncements).subscribe(this.deleteResultToast);
   }
 
   // Update date value and date labels

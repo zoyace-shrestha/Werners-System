@@ -1,0 +1,10 @@
+
+<div *ngIf="announcement">
+  <ion-row id="previous-announcement-row" class="with-bottom-border" [routerLink]="navigateToPreviousAnnouncementForm(announcement)">
+    <ion-col>
+      <div id="previous-title">{{announcement.title}}</div>
+      <div id="previous-date-range">{{convertDateToString(announcement.publishDate)}} - {{convertDateToString(announcement.expirationDate)}}</div>
+    </ion-col>
+      <ion-icon class="nav-previous" style="color: grey;" name="chevron-forward-outline"></ion-icon>
+  </ion-row>
+</div>

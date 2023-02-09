@@ -1,7 +1,31 @@
 <ion-grid>
   <ion-card>
     <ion-card-header id="card-header">
-      <ion-card-title>{{title}}</ion-card-title>
+      <div id="form-header">
+        <ion-card-title id="form-title">{{title}}</ion-card-title>
+        <div *ngIf="isPrevious">
+          <ion-button fill="clear" id="{{ 'delete' + announcement.idAnnouncements }}" expand="block">
+            <ion-icon name="trash-outline" class="werner-gray"></ion-icon>
+          </ion-button>
+          <ion-modal id="example-modal" class="example-modal" #modal
+            trigger="{{ 'delete' + announcement.idAnnouncements }}">
+            <ng-template>
+              <div class="wrapper">
+                <app-announcement-card [announcement]="announcement" id="announcement-card"></app-announcement-card>
+                <ion-row lines="none" class="buttons">
+                  <ion-button detail="false" (click)="modal.dismiss()" fill="clear">
+                    Cancel
+                  </ion-button>
+                  <ion-button detail="false" (click)="onDelete(announcement); modal.dismiss() " class="blue-btn"
+                    color="danger">
+                    Delete
+                  </ion-button>
+                </ion-row>
+              </div>
+            </ng-template>
+          </ion-modal>
+        </div>
+      </div>
     </ion-card-header>
     <ion-card-content>
       <ion-row>
