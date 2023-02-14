@@ -40,6 +40,14 @@ export class BannerService {
     return this.makePostListCall('/getAnnouncements', searchObject);
   }
 
+  getPrevious = ():Observable<Announcement[]> => {
+    let searchObject: AnnouncementSearch = getDefaultSearch();
+    searchObject.includeFuture = false;
+    searchObject.includeActive = false;
+    searchObject.includeDraft = false;
+    return this.makePostListCall('/getAnnouncements', searchObject);
+  }
+
   deleteById(id: Number) {
     let path = "/delete/" + id;
     return this.http.delete<{}>(this.baseUrl + path)

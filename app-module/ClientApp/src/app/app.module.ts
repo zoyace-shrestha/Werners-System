@@ -18,6 +18,10 @@ import { AnnouncementManagerComponent } from './announcement-manager/announcemen
 import { LoadingComponent } from './loading/loading.component';
 import { AnnouncementFormComponent } from './announcement-form/announcement-form.component';
 import { UpdateAnnouncementComponent } from './update-announcement/update-announcement.component';
+import {AnnouncementPreviousPage} from './announcement-previous/announcement-previous';
+import { AnnouncementRowComponent} from './announcement-previous/announcement-row.component';
+import { DatePipe } from '@angular/common';
+import { PreviousAnnouncementComponent } from './previous-announcement/previous-announcement.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { UpdateAnnouncementComponent } from './update-announcement/update-announ
     AnnouncementManagerComponent,
     LoadingComponent,
     AnnouncementFormComponent,
-    UpdateAnnouncementComponent
+    UpdateAnnouncementComponent,
+    AnnouncementPreviousPage,
+    AnnouncementRowComponent,
+    PreviousAnnouncementComponent,
+   
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -45,11 +53,13 @@ import { UpdateAnnouncementComponent } from './update-announcement/update-announ
       { path: 'announcementManager', component: AnnouncementManagerComponent },
       { path: 'create', component: CreateAnnouncementComponent },
       { path: 'update/:id', component: UpdateAnnouncementComponent },
+      { path: 'previous/:id', component: PreviousAnnouncementComponent },
+      {path: 'announcementPrevious', component: AnnouncementPreviousPage},
     ]),
     IonicModule.forRoot(),
     SwiperModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
