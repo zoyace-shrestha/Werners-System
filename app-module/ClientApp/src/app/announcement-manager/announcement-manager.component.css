@@ -51,7 +51,6 @@
 }
 
 .main-content {
-  /* margin-top: 50px;  */
   padding: 5px;
 }
 
@@ -145,7 +144,7 @@ ion-reorder {
   margin-top: 10px;
 }
 
-ion-modal#example-modal {
+ion-modal.example-modal {
   --width: fit-content;
   --min-width: 250px;
   --height: fit-content;
@@ -153,11 +152,11 @@ ion-modal#example-modal {
   --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
 }
 
-ion-modal#example-modal h1 {
+ion-modal.example-modal h1 {
   margin: 20px 20px 10px 20px;
 }
 
-ion-modal#example-modal ion-icon {
+ion-modal.example-modal ion-icon {
   margin-right: 6px;
 
   width: 48px;
@@ -168,11 +167,11 @@ ion-modal#example-modal ion-icon {
   color: #aaaaaa;
 }
 
-ion-modal#example-modal .wrapper {
+ion-modal.example-modal .wrapper {
   margin-bottom: 10px;
 }
 
-#announcement-card {
+.announcement-card {
   width: 400px;
   margin: 0px 10px;
 }

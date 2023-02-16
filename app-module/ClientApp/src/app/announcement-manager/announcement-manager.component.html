@@ -39,11 +39,11 @@
                 <ion-button fill="clear" id="{{ 'delete' + banner.idAnnouncements }}" expand="block">
                   <ion-icon name="trash-outline" class="werner-gray"></ion-icon>
                 </ion-button>
-                <ion-modal id="example-modal" class="example-modal" #modal
+                <ion-modal class="example-modal" #modal
                   trigger="{{ 'delete' + banner.idAnnouncements }}">
                   <ng-template>
                     <div class="wrapper">
-                      <app-announcement-card [announcement]="banner" id="announcement-card"></app-announcement-card>
+                      <app-announcement-card [announcement]="banner" class="announcement-card"></app-announcement-card>
                       <ion-row lines="none" class="buttons">
                         <ion-button detail="false" (click)="modal.dismiss()" fill="clear">
                           Cancel

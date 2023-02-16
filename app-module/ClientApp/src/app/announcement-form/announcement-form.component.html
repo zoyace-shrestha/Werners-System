@@ -1,17 +1,17 @@
 <ion-grid>
   <ion-card>
-    <ion-card-header id="card-header">
-      <div id="form-header">
-        <ion-card-title id="form-title">{{title}}</ion-card-title>
+    <ion-card-header class="card-header">
+      <div class="form-header">
+        <ion-card-title class="form-title">{{title}}</ion-card-title>
         <div *ngIf="isPrevious">
           <ion-button fill="clear" id="{{ 'delete' + announcement.idAnnouncements }}" expand="block">
             <ion-icon name="trash-outline" class="werner-gray"></ion-icon>
           </ion-button>
-          <ion-modal id="example-modal" class="example-modal" #modal
+          <ion-modal class="example-modal" #modal
             trigger="{{ 'delete' + announcement.idAnnouncements }}">
             <ng-template>
               <div class="wrapper">
-                <app-announcement-card [announcement]="announcement" id="announcement-card"></app-announcement-card>
+                <app-announcement-card [announcement]="announcement" class="announcement-card"></app-announcement-card>
                 <ion-row lines="none" class="buttons">
                   <ion-button detail="false" (click)="modal.dismiss()" fill="clear">
                     Cancel
@@ -49,7 +49,7 @@
 
           <ion-row>
             <ion-col>
-              <ion-item id="publishDate" [ngClass]="validationClass(validation.publishDateState)">
+              <ion-item class="publishDate" [ngClass]="validationClass(validation.publishDateState)">
                 <ion-label position="stacked">Publish Date</ion-label>
                 <ion-input
                   class="date-input"
@@ -72,7 +72,7 @@
             </ion-col>
 
             <ion-col>
-              <ion-item id="expirationDate">
+              <ion-item class="expirationDate">
                 <ion-label position="stacked">Expiration Date</ion-label>
                 <ion-input
                   class="date-input"
@@ -129,14 +129,14 @@
             </ion-col>
           </ion-row>
 
-          <ion-row id="news-box">
+          <ion-row class="news-box">
             <app-announcement-card class="form-card" [announcement]="announcement"></app-announcement-card>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-button id="primary-btn" (click)="save()">{{saveButtonTitle}}</ion-button>
-              <ion-button id="secondary-btn"  (click)="saveDraft()">{{saveDraftButtonTitle}}</ion-button>
-              <ion-button id="secondary-btn" (click)="reset()">RESET</ion-button>
+              <ion-button class="primary-btn" (click)="save()">{{saveButtonTitle}}</ion-button>
+              <ion-button class="secondary-btn"  (click)="saveDraft()">{{saveDraftButtonTitle}}</ion-button>
+              <ion-button class="secondary-btn" (click)="reset()">RESET</ion-button>
             </ion-col>
           </ion-row>
         </ion-col>
