@@ -101,6 +101,15 @@
   align-items: center;
 }
 
+.drafttag{
+  background-color: #F2C94C;
+  color:#000000;
+}
+
+.spacer {
+  width: 10px;  
+}
+
 .my-dragable {
   --ionicon-stroke-width: 40px;
 }
@@ -128,7 +137,7 @@ ion-reorder {
 .col3-row {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
 

@@ -31,6 +31,8 @@
             </ion-col>
             <ion-col size-lg="5" size-md="4" size-sm="4" class="bannercol-third with-bottom-border">
               <ion-row class="col3-row">
+                <ion-note *ngIf="banner.isDraft" class="dateid drafttag">Draft</ion-note>
+                <div *ngIf="banner.isDraft && expirationDateValid(banner)" class="spacer"><!--spacer--></div>
                 <ion-note *ngIf="expirationDateValid(banner)" [style.backgroundColor]="banner.background" class="dateid {{getClass(banner)}}">
                   Exp. {{ expirationDateFormat(banner) }}
                 </ion-note>
