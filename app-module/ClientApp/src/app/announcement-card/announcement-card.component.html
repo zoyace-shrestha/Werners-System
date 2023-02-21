@@ -1,17 +1,17 @@
 <div *ngIf="announcement">
   <a [routerLink]="" (click)="openWithSystemBrowser(announcement.link)" [style]="linkChecker(announcement.link)">
-  <ion-card id="announcement-card" color="{{announcement.background}}">
-    <ion-card-header id="heading-container">
-      <div id="announcement-heading">
-        <ion-card-title id="announcement-type">{{announcement.type}}<span *ngIf="publishDateNew(announcement, 14)"> - New</span></ion-card-title>
-        <span id="announcement-date" *ngIf="publishDateValid(announcement)">{{ publishDateFormat(announcement) }}</span>
+  <ion-card class="announcement-card" color="{{announcement.background}}">
+    <ion-card-header class="heading-container">
+      <div class="announcement-heading">
+        <ion-card-title class="announcement-type">{{announcement.type}}<span *ngIf="publishDateNew(announcement, 14)"> - New</span></ion-card-title>
+        <span class="announcement-date" *ngIf="publishDateValid(announcement)">{{ publishDateFormat(announcement) }}</span>
       </div>
-      <ion-card-subtitle id="announcement-title">{{announcement.title}}</ion-card-subtitle>
+      <ion-card-subtitle class="announcement-title">{{announcement.title}}</ion-card-subtitle>
     </ion-card-header>
-    <ion-card-content id="announcement-description">
+    <ion-card-content class="announcement-description">
       {{announcement.description}}
     </ion-card-content>
-    <div id="announcement-link" *ngIf="announcement.link">
+    <div class="announcement-link" *ngIf="announcement.link">
          <ion-icon  name="open-outline"></ion-icon>
     </div>
   </ion-card>

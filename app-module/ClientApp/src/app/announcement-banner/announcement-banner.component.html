@@ -2,7 +2,7 @@
   <swiper [config]="config" #swiperSlideShow>
     <ng-template ngFor let-announcement [ngForOf]="announcementList">
       <ng-template swiperSlide>
-        <app-announcement-card id="announcement-card"[announcement]="announcement"></app-announcement-card>
+        <app-announcement-card class="announcement-card"[announcement]="announcement"></app-announcement-card>
       </ng-template>
     </ng-template>
   </swiper>
