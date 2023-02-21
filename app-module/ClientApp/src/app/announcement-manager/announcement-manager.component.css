@@ -101,8 +101,8 @@
 }
 
 .drafttag{
-  background-color: #F2C94C;
-  color:#000000;
+  background-color: rgb(242, 201, 76, .5);
+  color: rgb(0, 0, 0, 0.7)
 }
 
 .my-dragable {
