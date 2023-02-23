@@ -1,16 +1,16 @@
 <ion-grid class="main-content">
   <ion-card>
-    <ion-row class="header-row">
-      <ion-header class="header-label">
-        <span class="main-header werner-gray">Previous Announcements</span>
-      </ion-header>
-    </ion-row>
+    <ion-card-header class="card-header">
+      <div class="form-header">
+        <ion-card-title class="form-title">Previous Announcements</ion-card-title>
+        </div>
+      </ion-card-header>
     <ion-searchbar id="previous-search" [debounce]="500" (ionChange)="searchPreviousAnnouncements($event)"></ion-searchbar>
     <app-loading id="loading"></app-loading>
     <ion-row >
-      <div *ngIf="displayedAnnouncementList" style="width:100% !important;">
+      <div *ngIf="displayedAnnouncementList" class="displayedAnnouncementList">
         <ng-template ngFor let-announcement [ngForOf]="displayedAnnouncementList" >
-          <app-announcement-row [announcement]="announcement" ></app-announcement-row>
+          <app-announcement-row [announcement]="announcement" form-row></app-announcement-row>
         </ng-template>
       </div>
     </ion-row>

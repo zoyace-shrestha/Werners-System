@@ -1,9 +1,9 @@
 #previous-announcement-row {
-  width: 100% !important;
   margin: 10px;
   padding-bottom: 5px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   cursor: pointer;
 }
 
@@ -11,6 +11,9 @@
   color: black;
   font-weight: 500;
   font-size: 17px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .with-bottom-border {
