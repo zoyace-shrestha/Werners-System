@@ -93,6 +93,7 @@
   align-items: center;
 }
 
+
 .drafttag{
   background-color: rgb(242, 201, 76, .5);
   color: rgb(0, 0, 0, 0.7)
@@ -187,11 +188,19 @@ ion-modal.example-modal .wrapper {
 }
 
 .expiration-blue {
-  background-color:  rgba(56, 128, 255, 0.1);
+  background-color: rgba(56, 128, 255, 0.1);
   color: #3369B4;
 }
 
 .expiration-red {
   background-color: rgba(236, 68, 90, 0.1);
-  color:  #C03131;
+  color: #C03131;
+}
+
+@media only screen and (max-width: 767px) {
+  .my-dragable-icon {
+    padding-left: 20px;
+    margin-right: -5px;
+    z-index: 100;
+  }
 }

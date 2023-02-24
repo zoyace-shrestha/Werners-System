@@ -104,3 +104,21 @@ ion-modal.example-modal .wrapper {
   width: 400px;
   margin: 0px 10px;
 }
+
+.form-title {
+  padding: 16px;
+}
+
+.date-column {
+  min-width: 300px;
+}
+
+
+@media only screen and (max-width: 767px) {
+  .announcement-form {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+}
