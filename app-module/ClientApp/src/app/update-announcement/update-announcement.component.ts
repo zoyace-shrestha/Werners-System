@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { Announcement, blankAnnouncement } from '../announcement';
 import { BannerService } from '../banner.service';
+import { toast } from '../toasthelper';
 
 @Component({
   selector: 'app-update-announcement',
@@ -14,10 +16,10 @@ export class UpdateAnnouncementComponent implements OnInit {
 
   id: number = 0;
 
-  constructor(private bannerService: BannerService, private route: ActivatedRoute) { }
+  constructor(private bannerService: BannerService, private route: ActivatedRoute, private toastController: ToastController) { }
 
   ngOnInit(): void {
     this.id = parseInt(this.route.snapshot.paramMap.get('id') ?? "0");
-    this.bannerService.getAnnouncementById(this.id).subscribe(result => this.announcement = result);
+    this.bannerService.getAnnouncementById(this.id).subscribe({next: result => this.announcement = result, error: () => toast('failure', 'Failed to retrieve existing announcement', this.toastController)});
   }
 }

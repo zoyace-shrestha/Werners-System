@@ -3,8 +3,9 @@ import SwiperCore, {Autoplay, SwiperOptions, Keyboard, Pagination } from 'swiper
 import { SwiperComponent } from 'swiper/angular';
 import { AutoplayOptions } from 'swiper/types';
 import { Announcement } from '../announcement';
-import { AnnouncementCardComponent } from '../announcement-card/announcement-card.component';
 import { BannerService } from '../banner.service';
+import { ToastController } from '@ionic/angular';
+import { toast } from '../toasthelper';
 
 SwiperCore.use([Autoplay, Keyboard, Pagination]);
 
@@ -37,14 +38,14 @@ export class AnnouncementBannerComponent implements OnInit {
 
   announcementList: Array<Announcement> = []
 
-  constructor(private bannerService: BannerService) { }
+  constructor(private bannerService: BannerService, private toastController: ToastController,) { }
 
   ngOnInit(): void {
-    this.bannerService.getActivePublished().subscribe(banners => {
+    this.bannerService.getActivePublished().subscribe({next: banners => {
       this.announcementList = banners;
       setTimeout(() => {
         this.swiperSlideShow.swiperRef.autoplay.start(); 
       }, 500)
-    });
+    }, error: error => toast('danger','Failed to retrieve announcements', this.toastController)});
   }
 }
