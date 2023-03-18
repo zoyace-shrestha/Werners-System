@@ -13,7 +13,6 @@ namespace mobile_app_messaging_module.Controllers
     [ApiController]
     public class AnnouncementController : ControllerBase
     {
-
         private readonly aruizContext _context;
         private readonly AnnouncementManager announcementManager;
 
