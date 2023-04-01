@@ -11,4 +11,6 @@ public interface IAnnouncementManager
     public Announcement Create(Announcement announcement);
 
     public Announcement Update(Announcement announcement);
+
+    public bool shouldBroadcastAnnouncement(Announcement announcement);
 }

@@ -23,6 +23,9 @@ export class AnnouncementFormComponent implements OnInit {
   @Input() previousURL: String = "/announcementManager";
   @Input() isPrevious: Boolean = false;
 
+  // Date Variables
+  maxDate = 2099-12-31
+
   // Announcement Date Variables
   publishDate: String = this.announcement?.publishDate.toISOString();
   expirationDate: String = this.announcement?.expirationDate.toISOString();

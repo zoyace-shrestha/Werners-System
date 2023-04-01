@@ -88,7 +88,7 @@ export class AnnouncementManagerComponent implements OnInit {
     // Retrieve active banners
     this.bannerService.getActiveAndFuturePublished().subscribe({next: banners => {
       this.announcements = banners;
-    }, error: () => toast('failure', 'Failed to retrieve announcements', this.toastController), complete: hideloader});
+    }, error: () => toast('danger', 'Failed to retrieve announcements', this.toastController), complete: hideloader});
 
     // Hide loading component
     function hideloader() {

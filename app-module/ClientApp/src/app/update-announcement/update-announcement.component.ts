@@ -20,6 +20,6 @@ export class UpdateAnnouncementComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = parseInt(this.route.snapshot.paramMap.get('id') ?? "0");
-    this.bannerService.getAnnouncementById(this.id).subscribe({next: result => this.announcement = result, error: () => toast('failure', 'Failed to retrieve existing announcement', this.toastController)});
+    this.bannerService.getAnnouncementById(this.id).subscribe({next: result => this.announcement = result, error: () => toast('danger', 'Failed to retrieve existing announcement', this.toastController)});
   }
 }

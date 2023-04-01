@@ -94,7 +94,7 @@
 }
 
 
-.drafttag{
+.drafttag {
   background-color: rgb(242, 201, 76, .5);
   color: rgb(0, 0, 0, 0.7)
 }
@@ -203,4 +203,8 @@ ion-modal.example-modal .wrapper {
     margin-right: -5px;
     z-index: 100;
   }
+}
+
+.example-modal {
+  padding: 0 10px;
 }

@@ -33,7 +33,7 @@ export class AnnouncementPreviousPage {
     this.bannerService.getPrevious().subscribe({next: banners => {
       this.announcementList = banners;
       this.displayedAnnouncementList = banners
-    }, error: () => toast('failure', 'Failed to retrieve announcements', this.toastController), complete: this.hideloader});
+    }, error: () => toast('danger', 'Failed to retrieve announcements', this.toastController), complete: this.hideloader});
    }
 
 }

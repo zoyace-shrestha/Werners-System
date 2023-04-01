@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.SignalR;
 
 public class Startup
 {
@@ -32,6 +32,8 @@ public class Startup
                                                       "http://localhost:44419");
                               });
         });
+
+        services.AddSignalR();
 
         services.AddControllersWithViews();
 
@@ -58,8 +60,10 @@ public class Startup
 
         app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
+
         app.UseEndpoints(endpoints => {
             endpoints.MapControllers();
+            endpoints.MapHub<BroadcastHub>("/notify");
         });
 
     }

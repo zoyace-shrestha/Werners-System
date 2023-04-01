@@ -10,6 +10,8 @@ namespace mobile_app_messaging_module.Managers
             _context = context;
         }
 
+        // TODO: create method to get published active announcements for signal r broadcast
+
         public List<Announcement>? GetList(GetAnnouncementsModel getAnnouncementsModel)
         {
             // Retrieve all of the announcements
@@ -114,6 +116,14 @@ namespace mobile_app_messaging_module.Managers
             _context.UpdateRange(announcements);
             _context.SaveChanges();
             return announcements;
+        }
+
+
+        public bool shouldBroadcastAnnouncement(Announcement announcement)
+        {
+            // Ensure the announcement is not a draft and falls within the correct date ranges
+            return !announcement.isDraft == true && isActive(announcement);
+
         }
 
     }
