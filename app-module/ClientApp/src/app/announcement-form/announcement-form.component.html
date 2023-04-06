@@ -56,7 +56,7 @@
                 </ion-input>
                 <ion-modal class="date-modal" trigger="publishDate">
                   <ng-template>
-                    <ion-datetime #publishDateTime size="cover" showDefaultButtons="true" [(ngModel)]="publishDate"
+                    <ion-datetime #publishDateTime showClearButton size="cover" showDefaultButtons="true" [(ngModel)]="publishDate"
                       (ionChange)="publishDateChanged(publishDateTime.value)" [max]="maxDate">
                     </ion-datetime>
                   </ng-template>
@@ -76,6 +76,7 @@
                       #expirationDateTime 
                       size="cover" 
                       showDefaultButtons="true"
+                      showClearButtonshowClearButton
                       [(ngModel)]="expirationDate"
                       (ionChange)="expirationDateChanged(expirationDateTime.value)"
                       [max]="maxDate">
