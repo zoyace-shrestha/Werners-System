@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 import { Announcement } from '../announcement';
 import { BannerService } from '../banner.service';
+import { toast } from '../toasthelper';
 
 @Component({
   selector: 'app-announcement-previous',
@@ -25,14 +27,13 @@ export class AnnouncementPreviousPage {
     loadingComponent.style.display = 'none'
   }
 
-  constructor(private bannerService: BannerService) { }
+  constructor(private bannerService: BannerService, private toastController: ToastController) { }
 
   ngOnInit(): void { 
-    this.bannerService.getPrevious().subscribe(banners => {
+    this.bannerService.getPrevious().subscribe({next: banners => {
       this.announcementList = banners;
       this.displayedAnnouncementList = banners
-      this.hideloader()
-    });
+    }, error: () => toast('danger', 'Failed to retrieve announcements', this.toastController), complete: this.hideloader});
    }
 
 }

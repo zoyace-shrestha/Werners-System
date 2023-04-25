@@ -50,7 +50,7 @@ export class AnnouncementManagerComponent implements OnInit {
   }
 
   onDelete(banner: Announcement) {
-    this.bannerService.deleteById(banner.idAnnouncements).subscribe(() => this.deleteSuccessful(banner), () => this.deleteFailed());
+    this.bannerService.deleteById(banner.idAnnouncements).subscribe({next: () => this.deleteSuccessful(banner), error:() => this.deleteFailed()});
   }
 
   updatePageLink(banner: Announcement){
@@ -65,7 +65,7 @@ export class AnnouncementManagerComponent implements OnInit {
     });
 
     if(this.announcements){
-      this.bannerService.reorder(this.announcements).subscribe(result => { }, error => console.log(error));
+      this.bannerService.reorder(this.announcements).subscribe({next: result => { }, error: error => console.log(error)});
     }
 
   }
@@ -86,10 +86,9 @@ export class AnnouncementManagerComponent implements OnInit {
 
   ngOnInit() {
     // Retrieve active banners
-    this.bannerService.getActiveAndFuturePublished().subscribe(banners => {
+    this.bannerService.getActiveAndFuturePublished().subscribe({next: banners => {
       this.announcements = banners;
-      hideloader();
-    });
+    }, error: () => toast('danger', 'Failed to retrieve announcements', this.toastController), complete: hideloader});
 
     // Hide loading component
     function hideloader() {

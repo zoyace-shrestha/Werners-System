@@ -22,7 +22,7 @@
         <ion-reorder-group [disabled]="false" (ionItemReorder)="handleReorder($any($event))">
           <ion-row class="bannerrow" *ngFor="let banner of announcements; let i = index">
             <ion-col class="bannercol-first" size="1">
-              <ion-reorder>
+              <ion-reorder class="my-dragable-icon">
                 <ion-icon class="my-dragable" name="repeat"></ion-icon>
               </ion-reorder>
             </ion-col>
@@ -34,15 +34,14 @@
                 <ion-button fill="clear" id="{{ 'delete' + banner.idAnnouncements }}" expand="block">
                   <ion-icon name="trash-outline" class="werner-gray"></ion-icon>
                 </ion-button>
-                <ion-modal class="example-modal" #modal
-                  trigger="{{ 'delete' + banner.idAnnouncements }}">
+                <ion-modal class="example-modal" #modal trigger="{{ 'delete' + banner.idAnnouncements }}">
                   <ng-template>
                     <div class="wrapper">
                       <app-announcement-card [announcement]="banner" class="announcement-card"></app-announcement-card>
                       <ion-row lines="none" class="buttons">
                         <ion-button detail="false" (click)="modal.dismiss()" fill="clear">
                           Cancel
-                        </ion-button> 
+                        </ion-button>
                         <ion-button detail="false" (click)="onDelete(banner); modal.dismiss() " class="blue-btn"
                           color="danger">
                           Delete
@@ -56,7 +55,8 @@
                 </ion-button>
 
                 <ion-note *ngIf="banner.isDraft" class="dateid drafttag">Draft</ion-note>
-                <ion-note *ngIf="!banner.isDraft && expirationDateValid(banner)" [style.backgroundColor]="banner.background" class="dateid {{getClass(banner)}}">
+                <ion-note *ngIf="!banner.isDraft && expirationDateValid(banner)"
+                  [style.backgroundColor]="banner.background" class="dateid {{getClass(banner)}}">
                   Exp. {{ expirationDateFormat(banner) }}
                 </ion-note>
               </ion-row>

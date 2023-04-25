@@ -23,6 +23,9 @@ export class AnnouncementFormComponent implements OnInit {
   @Input() previousURL: String = "/announcementManager";
   @Input() isPrevious: Boolean = false;
 
+  // Date Variables
+  maxDate = 2099-12-31
+
   // Announcement Date Variables
   publishDate: String = this.announcement?.publishDate.toISOString();
   expirationDate: String = this.announcement?.expirationDate.toISOString();
@@ -99,14 +102,24 @@ export class AnnouncementFormComponent implements OnInit {
   // Publish Date: Update announcement property and label value when ion-datetime value is changed
   publishDateChanged(value: any) {
     this.validation.publishDateState = null;
-    this.announcement.publishDate = value;
-    this.publishDateLabel = formatDate(value, 'MM/dd/yyyy - hh:mm a', 'en-US');
+    if (value) {
+      this.announcement.publishDate = value;
+      this.publishDateLabel = formatDate(value, 'MM/dd/yyyy - hh:mm a', 'en-US');
+    } else {
+      this.announcement.publishDate = new Date(0);
+      this.publishDateLabel = "";
+    }
   }
 
   // Expiration Date: Update announcement property and label value when ion-datetime value is changed
   expirationDateChanged(value: any) {
-    this.announcement.expirationDate = value;
-    this.expirationDateLabel = formatDate(value, 'MM/dd/yyyy - hh:mm a', 'en-US');
+    if (value) {
+      this.announcement.expirationDate = value;
+      this.expirationDateLabel = formatDate(value, 'MM/dd/yyyy - hh:mm a', 'en-US');
+    } else {
+      this.announcement.expirationDate = new Date(0);
+      this.expirationDateLabel = "";
+    }
   }
 
   onDelete(banner: Announcement) {

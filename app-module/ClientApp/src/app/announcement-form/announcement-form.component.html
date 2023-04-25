@@ -7,8 +7,7 @@
           <ion-button fill="clear" id="{{ 'delete' + announcement.idAnnouncements }}" expand="block">
             <ion-icon name="trash-outline" class="werner-gray"></ion-icon>
           </ion-button>
-          <ion-modal class="example-modal" #modal
-            trigger="{{ 'delete' + announcement.idAnnouncements }}">
+          <ion-modal class="example-modal" #modal trigger="{{ 'delete' + announcement.idAnnouncements }}">
             <ng-template>
               <div class="wrapper">
                 <app-announcement-card [announcement]="announcement" class="announcement-card"></app-announcement-card>
@@ -27,18 +26,20 @@
         </div>
       </div>
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content class="announcement-form">
       <ion-row>
-        <ion-col size = "10" offset ="1">
+        <ion-col size="10" offset="1">
           <ion-item counter="true" [ngClass]="validationClass(validation.titleState)">
             <ion-label position="stacked">Title</ion-label>
-            <ion-input maxlength="48" [(ngModel)]="announcement.title" placeholder="Example Title" (ionInput)="validation.titleState = null"></ion-input>
+            <ion-input maxlength="48" [(ngModel)]="announcement.title" placeholder="Example Title"
+              (ionInput)="validation.titleState = null"></ion-input>
             <ion-note slot="error">Title is required.</ion-note>
           </ion-item>
 
           <ion-item counter="true" [ngClass]="validationClass(validation.descriptionState)">
             <ion-label position="stacked">Desciption</ion-label>
-            <ion-input maxlength="170" [(ngModel)]="announcement.description" placeholder="This is the description" (ionInput)="validation.descriptionState = null"></ion-input>
+            <ion-input maxlength="170" [(ngModel)]="announcement.description" placeholder="This is the description"
+              (ionInput)="validation.descriptionState = null"></ion-input>
             <ion-note slot="error">Description is required for non-draft.</ion-note>
           </ion-item>
 
@@ -48,22 +49,15 @@
           </ion-item>
 
           <ion-row>
-            <ion-col>
+            <ion-col class="date-column">
               <ion-item id="publishDate" [ngClass]="validationClass(validation.publishDateState)">
                 <ion-label position="stacked">Publish Date</ion-label>
-                <ion-input
-                  class="date-input"
-                  value="{{publishDateLabel}}"
-                  placeholder="mm/dd/yyyy">
+                <ion-input class="date-input" value="{{publishDateLabel}}" placeholder="mm/dd/yyyy">
                 </ion-input>
                 <ion-modal class="date-modal" trigger="publishDate">
                   <ng-template>
-                    <ion-datetime
-                      #publishDateTime
-                      size="cover"
-                      showDefaultButtons="true"
-                      [(ngModel)]="publishDate"
-                      (ionChange)="publishDateChanged(publishDateTime.value)">
+                    <ion-datetime #publishDateTime showClearButton size="cover" showDefaultButtons="true" [(ngModel)]="publishDate"
+                      (ionChange)="publishDateChanged(publishDateTime.value)" [max]="maxDate">
                     </ion-datetime>
                   </ng-template>
                 </ion-modal>
@@ -71,23 +65,22 @@
               </ion-item>
             </ion-col>
 
-            <ion-col>
+            <ion-col class="date-column">
               <ion-item id="expirationDate">
                 <ion-label position="stacked">Expiration Date</ion-label>
-                <ion-input
-                  class="date-input"
-                  value="{{expirationDateLabel}}"
-                  placeholder="mm/dd/yyyy">
+                <ion-input class="date-input" value="{{expirationDateLabel}}" placeholder="mm/dd/yyyy">
                 </ion-input>
-                <ion-modal class="date-modal"trigger="expirationDate">
+                <ion-modal class="date-modal" trigger="expirationDate">
                   <ng-template>
-                    <ion-datetime
-                      #expirationDateTime
-                      size="cover"
+                    <ion-datetime 
+                      #expirationDateTime 
+                      size="cover" 
                       showDefaultButtons="true"
+                      showClearButtonshowClearButton
                       [(ngModel)]="expirationDate"
                       (ionChange)="expirationDateChanged(expirationDateTime.value)"
-                    ></ion-datetime>
+                      [max]="maxDate">
+                    </ion-datetime>
                   </ng-template>
                 </ion-modal>
               </ion-item>
@@ -99,7 +92,8 @@
               <ion-list>
                 <ion-item [ngClass]="validationClass(validation.typeState)">
                   <ion-label position="stacked">Type</ion-label>
-                  <ion-select placeholder="News" [(ngModel)]="announcement.type" [multiple]="false" (ionChange)="validation.typeState = null">
+                  <ion-select placeholder="News" [(ngModel)]="announcement.type" [multiple]="false"
+                    (ionChange)="validation.typeState = null">
                     <ion-select-option selected value="Werner News">News</ion-select-option>
                     <ion-select-option value="Rewards">Rewards<ion-label></ion-label></ion-select-option>
                     <ion-select-option value="COVID-19">COVID-19</ion-select-option>
@@ -114,7 +108,8 @@
               <ion-list>
                 <ion-item [ngClass]="validationClass(validation.backgroundState)">
                   <ion-label position="stacked">Background</ion-label>
-                  <ion-select placeholder="White" [(ngModel)]="announcement.background" [multiple]="false" (ionChange)="validation.backgroundState = null">
+                  <ion-select placeholder="White" [(ngModel)]="announcement.background" [multiple]="false"
+                    (ionChange)="validation.backgroundState = null">
                     <ion-select-option value="light">White</ion-select-option>
                     <ion-select-option value="primary">Primary<ion-label></ion-label></ion-select-option>
                     <ion-select-option value="secondary">Secondary</ion-select-option>
@@ -135,7 +130,7 @@
           <ion-row>
             <ion-col>
               <ion-button class="primary-btn" (click)="save()">{{saveButtonTitle}}</ion-button>
-              <ion-button class="secondary-btn"  (click)="saveDraft()">{{saveDraftButtonTitle}}</ion-button>
+              <ion-button class="secondary-btn" (click)="saveDraft()">{{saveDraftButtonTitle}}</ion-button>
               <ion-button class="secondary-btn" (click)="reset()">RESET</ion-button>
             </ion-col>
           </ion-row>
